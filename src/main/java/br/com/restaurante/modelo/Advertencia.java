@@ -2,6 +2,11 @@ package br.com.restaurante.modelo;
 
 import java.time.LocalDate;
 
+/**
+ * Classe que representa a entidade Advertencia
+ *
+ * @author Gabriel Romano
+ */
 public class Advertencia {
 
 	private Long codigo;

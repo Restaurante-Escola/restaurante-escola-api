@@ -2,23 +2,44 @@ package br.com.restaurante.modelo;
 
 import java.time.LocalDate;
 
+/**
+ * Classe que representa a entidade Turma
+ *
+ * @author Gabriel Romano
+ */
 public class Turma {
-	
+
 	private Long codigo;
 	private Integer numero;
 	private LocalDate criadoEm;
 	private LocalDate atualizadoEm;
-	
+
 	public Turma(Long codigo, Integer numero, LocalDate criadoEm) {
 		this.codigo = codigo;
 		this.numero = numero;
 		this.criadoEm = criadoEm;
 	}
 
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public Integer getNumero() {
+		return numero;
+	}
+
+	public LocalDate getCriadoEm() {
+		return criadoEm;
+	}
+
+	public LocalDate getAtualizadoEm() {
+		return atualizadoEm;
+	}
+
 	public void setAtualizadoEm(LocalDate atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

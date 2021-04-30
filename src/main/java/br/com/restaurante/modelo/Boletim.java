@@ -3,7 +3,7 @@ package br.com.restaurante.modelo;
 import java.time.LocalDate;
 
 /**
- * A classe que representa a entidade Boletim
+ * Classe que representa a entidade Boletim
  *
  * @author Gabriel Romano
  */

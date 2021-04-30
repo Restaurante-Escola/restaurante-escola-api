@@ -2,44 +2,116 @@ package br.com.restaurante.modelo;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
- * A classe que representa a entidade Aluno
+ * Classe que representa a entidade Aluno
  *
  * @author Gabriel Romano
  */
+
+@Entity
 public class Aluno {
 
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cd_matricula_aluno")
 	private Long matricula;
+	
+	@Column(name= "nm_aluno")
 	private String nome;
+	
+	@Column(name = "cd_idade_aluno")
 	private Integer idade;
+	
+	@Column(name = "dt_nascimento_aluno")
 	private LocalDate dataNascimento;
+	
+	@Column(name = "nm_endereco_aluno")
 	private String endereco;
+	
+	@Column(name = "nm_cidade_aluno")
 	private String cidade;
+	
+	@Column(name = "nm_bairro_aluno")
 	private String bairro;
+	
+	@Column(name = "ds_obs_endereco_aluno")
 	private String observacaoEndereco;
+	
+	@Column(name = "nm_pai_aluno")
 	private String nomePai;
+	
+	@Column(name = "nm_mae_aluno")
 	private String nomeMae;
+	
+	@Column(name = "cd_telefone_aluno_fixo")
 	private String telefoneFixo;
+	
+	@Column(name = "cd_telefone_celular_aluno")
 	private String telefoneCelular;
+	
+	@Column(name = "nm_email_aluno")
 	private String email;
+	
+	@Column(name = "ic_alergia_aluno")
 	private Boolean alergia;
+	
+	@Column(name = "ic_alergia_remedio_aluno")
 	private Boolean alergiaRemedio;
+	
+	@Column(name = "ic_alergia_alimento_aluno")
 	private Boolean alergiaAlimento;
+	
+	@Column(name = "ic_alergia_outros_aluno")
 	private Boolean alergiaOutros;
+	
+	@Column(name = "ds_especificacao_alergia_aluno")
 	private String especificacaoAlergia;
+	
+	@Column(name = "ic_hipertensao_aluno")
 	private Boolean hipertensao;
+	
+	@Column(name = "ic_hipotensao_aluno")
 	private Boolean hipotensao;
+	
+	@Column(name = "ic_epilepsia_aluno")
 	private Boolean epilepsia;
+	
+	@Column(name = "ic_diabetes_aluno")
 	private Boolean diabetes;
+	
+	@Column(name = "ic_problema_renal_aluno")
 	private Boolean problemaRenal;
+	
+	@Column(name = "ic_problema_ocular_aluno")
 	private Boolean problemaOcular;
+	
+	@Column(name = "ic_problema_respiratorio_aluno")
 	private Boolean problemaRespiratorio;
+	
+	@Column(name = "ic_fumante_aluno")
 	private Boolean fumante;
+	
+	@Column(name = "ds_obs_aluno")
 	private String observasao;
+	
+	@Column(name = "ds_emergencia_aluno")
 	private String emergencia;
+	
+	@Column(name = "cd_camiseta_aluno")
 	private String camiseta;
+	
+	@Column(name = "cd_sapato_aluno")
 	private String sapato;
+	
+	@Column(name = "dt_criado_em")
 	private LocalDate criadoEm;
+	
+	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 
 	@Deprecated
@@ -242,5 +314,4 @@ public class Aluno {
 			return false;
 		return true;
 	}
-
 }
