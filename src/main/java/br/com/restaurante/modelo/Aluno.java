@@ -8,7 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  * Classe que representa a entidade Aluno
@@ -122,6 +125,9 @@ public class Aluno {
 	
 	@OneToMany(mappedBy = "aluno")
 	private List<Boletim> boletins;
+	
+	@OneToOne
+	private Turma turma;
 
 	@Deprecated
 	public Aluno() {
@@ -313,6 +319,14 @@ public class Aluno {
 
 	public void setBoletins(List<Boletim> boletins) {
 		this.boletins = boletins;
+	}
+	
+	public Turma getTurma() {
+		return turma;
+	}
+
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
 
 	@Override

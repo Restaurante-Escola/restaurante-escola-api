@@ -3,11 +3,15 @@ package br.com.restaurante.modelo;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+
+import com.sun.istack.NotNull;
 
 /**
  * Classe que representa a entidade Turma
@@ -17,21 +21,31 @@ import javax.persistence.OneToMany;
 @Entity
 public class Turma {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cd_turma")
+	@NotNull
 	private Long codigo;
+	@Column(name = "cd_numero_turma")
 	private Integer numero;
+	@Column(name = "dt_criado_em")
 	private LocalDate criadoEm;
+	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
-	
+
 	@OneToMany
+	@JoinColumn(name = "turmas") // para nao criar outra tabela intermediaria, dessa vez chamadaturma_disciplinas
 	private List<Disciplina> disciplinas;
-	
+
+	@OneToMany
+	private List<Aluno> alunos;
+
 	@OneToMany(mappedBy = "turma")
 	private List<Advertencia> advertencias;
-	
+
 	@Deprecated
 	public Turma() {
-		
+
 	}
 
 	public Turma(Long codigo, Integer numero, LocalDate criadoEm) {
@@ -59,7 +73,7 @@ public class Turma {
 	public void setAtualizadoEm(LocalDate atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
 	}
-	
+
 	public List<Advertencia> getAdvertencias() {
 		return advertencias;
 	}
@@ -67,13 +81,21 @@ public class Turma {
 	public void setAdvertencias(List<Advertencia> advertencias) {
 		this.advertencias = advertencias;
 	}
-	
+
 	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
 
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+
+	public List<Aluno> getAlunos() {
+		return alunos;
 	}
 
 	@Override
