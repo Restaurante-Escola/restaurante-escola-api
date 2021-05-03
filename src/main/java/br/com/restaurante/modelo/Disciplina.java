@@ -1,11 +1,14 @@
 package br.com.restaurante.modelo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * Classe que representa a entidade Disciplina
@@ -15,14 +18,22 @@ import javax.persistence.Id;
 @Entity
 public class Disciplina {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	private String nome;
 	private LocalDate criadoEm;
 	private LocalDate atualizadoEm;
-	
+
+	@OneToMany
+	private List<Turma> turmas;
+
+	@OneToMany(mappedBy = "disciplina")
+	private List<Boletim> boletins;
+
 	@Deprecated
-	public Disciplina() {}
+	public Disciplina() {
+	}
 
 	public Disciplina(Long codigo, String nome, LocalDate criadoEm) {
 		this.codigo = codigo;
@@ -45,9 +56,25 @@ public class Disciplina {
 	public LocalDate getAtualizadoEm() {
 		return atualizadoEm;
 	}
-	
+
+	public List<Boletim> getBoletins() {
+		return boletins;
+	}
+
 	public void setAtualizadoEm(LocalDate atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
+	}
+
+	public void setBoletins(List<Boletim> boletins) {
+		this.boletins = boletins;
+	}
+
+	public List<Turma> getTurmas() {
+		return turmas;
+	}
+
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
 	}
 
 	@Override

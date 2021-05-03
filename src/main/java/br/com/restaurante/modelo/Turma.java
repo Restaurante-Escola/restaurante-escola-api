@@ -23,6 +23,9 @@ public class Turma {
 	private LocalDate criadoEm;
 	private LocalDate atualizadoEm;
 	
+	@OneToMany
+	private List<Disciplina> disciplinas;
+	
 	@OneToMany(mappedBy = "turma")
 	private List<Advertencia> advertencias;
 	
@@ -63,6 +66,14 @@ public class Turma {
 
 	public void setAdvertencias(List<Advertencia> advertencias) {
 		this.advertencias = advertencias;
+	}
+	
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
+	}
+
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
 	}
 
 	@Override

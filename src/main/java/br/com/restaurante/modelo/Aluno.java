@@ -119,6 +119,9 @@ public class Aluno {
 
 	@OneToMany(mappedBy = "aluno")
 	private List<Advertencia> advertencias;
+	
+	@OneToMany(mappedBy = "aluno")
+	private List<Boletim> boletins;
 
 	@Deprecated
 	public Aluno() {
@@ -302,6 +305,14 @@ public class Aluno {
 
 	public void setAdvertencias(List<Advertencia> advertencias) {
 		this.advertencias = advertencias;
+	}
+	
+	public List<Boletim> getBoletins() {
+		return boletins;
+	}
+
+	public void setBoletins(List<Boletim> boletins) {
+		this.boletins = boletins;
 	}
 
 	@Override

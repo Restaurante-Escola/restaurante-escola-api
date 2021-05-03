@@ -6,23 +6,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * Classe que representa a entidade Boletim
  *
  * @author Gabriel Romano
  */
-//@Entity
+@Entity
 public class Boletim {
-	
-//	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
+	@ManyToOne
 	private Disciplina disciplina;
+	@ManyToOne
 	private Aluno aluno;
-	private Integer nota;	
+	private Integer nota;
 	private LocalDate criadoEm;
 	private LocalDate atualizadoEm;
-	
+
+	@Deprecated
+	public Boletim() {
+	}
+
 	public Boletim(Long codigo, Disciplina disciplina, Aluno aluno, Integer nota, LocalDate criadoEm) {
 		this.codigo = codigo;
 		this.disciplina = disciplina;
@@ -54,11 +62,19 @@ public class Boletim {
 	public LocalDate getAtualizadoEm() {
 		return atualizadoEm;
 	}
-	
+
 	public void setAtualizadoEm(LocalDate atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
 	}
-	
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
