@@ -1,11 +1,13 @@
 package br.com.restaurante.modelo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Classe que representa a entidade Turma
@@ -20,6 +22,9 @@ public class Turma {
 	private Integer numero;
 	private LocalDate criadoEm;
 	private LocalDate atualizadoEm;
+	
+	@OneToMany(mappedBy = "turma")
+	private List<Advertencia> advertencias;
 	
 	@Deprecated
 	public Turma() {
@@ -50,6 +55,14 @@ public class Turma {
 
 	public void setAtualizadoEm(LocalDate atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
+	}
+	
+	public List<Advertencia> getAdvertencias() {
+		return advertencias;
+	}
+
+	public void setAdvertencias(List<Advertencia> advertencias) {
+		this.advertencias = advertencias;
 	}
 
 	@Override

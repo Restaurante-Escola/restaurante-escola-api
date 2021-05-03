@@ -20,6 +20,11 @@ public class Feriado {
 	private LocalDate data;
 	private LocalDate criadoEm;
 	private LocalDate atualizadoEm;
+	
+	@Deprecated
+	public Feriado() {
+		
+	}
 
 	public Feriado(Long codigo, LocalDate data, LocalDate criadoEm) {
 		this.codigo = codigo;

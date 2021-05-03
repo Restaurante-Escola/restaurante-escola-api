@@ -6,13 +6,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-//@Entity
+@Entity
 public class Advertencia {
 
-//	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
+	@ManyToOne
 	private Aluno aluno;
+	@ManyToOne
 	private Turma turma;
 	private String descricao;
 	private LocalDate criadoEm;
