@@ -2,23 +2,31 @@ package br.com.restaurante.modelo;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Advertencia {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cd_advertencia")
 	private Long codigo;
 	@ManyToOne
+	@JoinColumn(name = "cd_matricula_aluno")
 	private Aluno aluno;
 	@ManyToOne
+	@JoinColumn(name = "cd_turma")
 	private Turma turma;
+	@Column(name = "ds_advertencia")
 	private String descricao;
+	@Column(name = "dt_criado_em")
 	private LocalDate criadoEm;
+	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 	
 	public Advertencia() {}

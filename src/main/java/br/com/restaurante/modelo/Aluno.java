@@ -122,12 +122,15 @@ public class Aluno {
 
 	@OneToMany(mappedBy = "aluno")
 	private List<Advertencia> advertencias;
-	
+
 	@OneToMany(mappedBy = "aluno")
 	private List<Boletim> boletins;
-	
-	@OneToOne
-	private Turma turma;
+//
+//	@OneToMany(mappedBy = "aluno")
+//	private List<Frequencia> frequencias;
+
+	@OneToMany
+	private List<Turma> turma;
 
 	@Deprecated
 	public Aluno() {
@@ -312,7 +315,7 @@ public class Aluno {
 	public void setAdvertencias(List<Advertencia> advertencias) {
 		this.advertencias = advertencias;
 	}
-	
+
 	public List<Boletim> getBoletins() {
 		return boletins;
 	}
@@ -320,12 +323,20 @@ public class Aluno {
 	public void setBoletins(List<Boletim> boletins) {
 		this.boletins = boletins;
 	}
-	
-	public Turma getTurma() {
+
+//	public List<Frequencia> getFrequencias() {
+//		return frequencias;
+//	}
+//
+//	public void setFrequencias(List<Frequencia> frequencias) {
+//		this.frequencias = frequencias;
+//	}
+
+	public List<Turma> getTurma() {
 		return turma;
 	}
 
-	public void setTurma(Turma turma) {
+	public void setTurma(List<Turma> turma) {
 		this.turma = turma;
 	}
 

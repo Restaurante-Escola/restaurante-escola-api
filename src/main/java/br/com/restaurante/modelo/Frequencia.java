@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.sun.istack.NotNull;
 
@@ -20,9 +23,11 @@ public class Frequencia {
 	private Long codigo;
 
 //	@Column(name = "cd_turma")
+//	@OneToMany
 //	private Turma turma;
-//
+
 //	@Column(name = "cd_matricula_aluno")
+//	@OneToOne
 //	private Aluno aluno;
 
 	@Column(name = "dt_aula")
@@ -57,7 +62,7 @@ public class Frequencia {
 //	public Turma getTurma() {
 //		return turma;
 //	}
-//
+
 //	public Aluno getAluno() {
 //		return aluno;
 //	}
@@ -81,7 +86,7 @@ public class Frequencia {
 	public void setAtualizadoEm(LocalDate atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

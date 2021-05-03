@@ -38,11 +38,15 @@ public class Turma {
 	private List<Disciplina> disciplinas;
 
 	@OneToMany
+	@JoinColumn(name = "turmas")
 	private List<Aluno> alunos;
 
 	@OneToMany(mappedBy = "turma")
 	private List<Advertencia> advertencias;
 
+//	@OneToMany(mappedBy = "turma")
+//	private List<Frequencia> frequencias;
+	
 	@Deprecated
 	public Turma() {
 
