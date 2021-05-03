@@ -2,19 +2,23 @@ package br.com.restaurante.modelo;
 
 import java.time.LocalDate;
 
-/**
- * Classe que representa a entidade Advertencia
- *
- * @author Gabriel Romano
- */
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+//@Entity
 public class Advertencia {
 
+//	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	private Aluno aluno;
 	private Turma turma;
 	private String descricao;
 	private LocalDate criadoEm;
 	private LocalDate atualizadoEm;
+	
+	public Advertencia() {}
 
 	public Advertencia(Long codigo, Aluno aluno, Turma turma, String descricao, LocalDate criadoEm) {
 		this.codigo = codigo;

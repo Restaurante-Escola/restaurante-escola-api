@@ -2,17 +2,27 @@ package br.com.restaurante.modelo;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Classe que representa a entidade Disciplina
  *
  * @author Gabriel Romano
  */
+@Entity
 public class Disciplina {
 
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	private String nome;
 	private LocalDate criadoEm;
 	private LocalDate atualizadoEm;
+	
+	@Deprecated
+	public Disciplina() {}
 
 	public Disciplina(Long codigo, String nome, LocalDate criadoEm) {
 		this.codigo = codigo;

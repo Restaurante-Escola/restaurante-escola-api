@@ -2,17 +2,29 @@ package br.com.restaurante.modelo;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Classe que representa a entidade Turma
  *
  * @author Gabriel Romano
  */
+@Entity
 public class Turma {
 
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	private Integer numero;
 	private LocalDate criadoEm;
 	private LocalDate atualizadoEm;
+	
+	@Deprecated
+	public Turma() {
+		
+	}
 
 	public Turma(Long codigo, Integer numero, LocalDate criadoEm) {
 		this.codigo = codigo;
