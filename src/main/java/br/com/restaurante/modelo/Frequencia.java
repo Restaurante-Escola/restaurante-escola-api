@@ -1,19 +1,22 @@
 package br.com.restaurante.modelo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
 
 @Entity
+@Table(name = "FREQUENCIA_ALUNO")
 public class Frequencia {
 
 	@Id
@@ -22,13 +25,16 @@ public class Frequencia {
 	@NotNull
 	private Long codigo;
 
-//	@Column(name = "cd_turma")
-//	@OneToMany
-//	private Turma turma;
+	@ManyToOne
+	@JoinColumn(name = "cd_turma")
+	private Turma turma;
 
-//	@Column(name = "cd_matricula_aluno")
-//	@OneToOne
-//	private Aluno aluno;
+	@ManyToOne
+	@JoinColumn(name = "cd_matricula_aluno")
+	private Aluno aluno;
+	
+	@OneToMany(mappedBy = "frequencia")
+	private List<OcorrenciaDiario> ocorrenciaDiario;
 
 	@Column(name = "dt_aula")
 	private LocalDate dataAula;
@@ -48,8 +54,8 @@ public class Frequencia {
 	public Frequencia(Long codigo, Turma turma, Aluno aluno, LocalDate dataAula, LocalDate alunoPresente,
 			LocalDate criadoEm) {
 		this.codigo = codigo;
-//		this.turma = turma;
-//		this.aluno = aluno;
+		this.turma = turma;
+		this.aluno = aluno;
 		this.dataAula = dataAula;
 		this.alunoPresente = alunoPresente;
 		this.criadoEm = criadoEm;
@@ -59,13 +65,13 @@ public class Frequencia {
 		return codigo;
 	}
 
-//	public Turma getTurma() {
-//		return turma;
-//	}
+	public Turma getTurma() {
+		return turma;
+	}
 
-//	public Aluno getAluno() {
-//		return aluno;
-//	}
+	public Aluno getAluno() {
+		return aluno;
+	}
 
 	public LocalDate getDataAula() {
 		return dataAula;
@@ -85,6 +91,22 @@ public class Frequencia {
 
 	public void setAtualizadoEm(LocalDate atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
+	}
+	
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+	
+	public void setTurma(Turma turma) {
+		this.turma = turma;
+	}
+	
+	public List<OcorrenciaDiario> getOcorrenciaDiario() {
+		return ocorrenciaDiario;
+	}
+
+	public void setOcorrenciaDiario(List<OcorrenciaDiario> ocorrenciaDiario) {
+		this.ocorrenciaDiario = ocorrenciaDiario;
 	}
 	
 	@Override

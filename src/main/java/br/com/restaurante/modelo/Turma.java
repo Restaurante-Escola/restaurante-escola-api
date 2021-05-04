@@ -44,12 +44,14 @@ public class Turma {
 	@OneToMany(mappedBy = "turma")
 	private List<Advertencia> advertencias;
 
-//	@OneToMany(mappedBy = "turma")
-//	private List<Frequencia> frequencias;
-	
+	@OneToMany(mappedBy = "turma")
+	private List<Frequencia> frequencias;
+
+	@OneToMany(mappedBy = "turma")
+	private List<OcorrenciaDiario> ocorrenciaDiario;
+
 	@Deprecated
 	public Turma() {
-
 	}
 
 	public Turma(Long codigo, Integer numero, LocalDate criadoEm) {
@@ -100,6 +102,22 @@ public class Turma {
 
 	public List<Aluno> getAlunos() {
 		return alunos;
+	}
+
+	public List<Frequencia> getFrequencias() {
+		return frequencias;
+	}
+
+	public void setFrequencias(List<Frequencia> frequencias) {
+		this.frequencias = frequencias;
+	}
+
+	public List<OcorrenciaDiario> getOcorrenciaDiario() {
+		return ocorrenciaDiario;
+	}
+
+	public void setOcorrenciaDiario(List<OcorrenciaDiario> ocorrenciaDiario) {
+		this.ocorrenciaDiario = ocorrenciaDiario;
 	}
 
 	@Override

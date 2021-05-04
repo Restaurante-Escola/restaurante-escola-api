@@ -8,10 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  * Classe que representa a entidade Aluno
@@ -125,13 +122,16 @@ public class Aluno {
 
 	@OneToMany(mappedBy = "aluno")
 	private List<Boletim> boletins;
-//
-//	@OneToMany(mappedBy = "aluno")
-//	private List<Frequencia> frequencias;
+
+	@OneToMany(mappedBy = "aluno")
+	private List<Frequencia> frequencias;
+	
+	@OneToMany(mappedBy = "aluno")
+	private List<OcorrenciaDiario> ocorrenciaDiario;
 
 	@OneToMany
 	private List<Turma> turma;
-
+	
 	@Deprecated
 	public Aluno() {
 	}
@@ -324,13 +324,13 @@ public class Aluno {
 		this.boletins = boletins;
 	}
 
-//	public List<Frequencia> getFrequencias() {
-//		return frequencias;
-//	}
-//
-//	public void setFrequencias(List<Frequencia> frequencias) {
-//		this.frequencias = frequencias;
-//	}
+	public List<Frequencia> getFrequencias() {
+		return frequencias;
+	}
+
+	public void setFrequencias(List<Frequencia> frequencias) {
+		this.frequencias = frequencias;
+	}
 
 	public List<Turma> getTurma() {
 		return turma;
@@ -340,8 +340,16 @@ public class Aluno {
 		this.turma = turma;
 	}
 
+	public List<OcorrenciaDiario> getOcorrenciaDiario() {
+		return ocorrenciaDiario;
+	}
+
+	public void setOcorrenciaDiario(List<OcorrenciaDiario> ocorrenciaDiario) {
+		this.ocorrenciaDiario = ocorrenciaDiario;
+	}
+	
 	@Override
-	public int hashCode() {
+	public int hashCode() { 
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());

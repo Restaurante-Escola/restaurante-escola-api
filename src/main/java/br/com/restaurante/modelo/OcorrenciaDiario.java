@@ -9,46 +9,45 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-/**
- * Classe que representa a entidade Boletim
- *
- * @author Gabriel Romano
- */
+import com.sun.istack.NotNull;
+
 @Entity
-public class Boletim {
+@Table(name = "OCORRENCIA_DIARIO")
+public class OcorrenciaDiario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cd_boletim")
+	@Column(name = "cd_ocorrencia")
+	@NotNull
 	private Long codigo;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "cd_disciplina")
-	private Disciplina disciplina;
-	
+	@JoinColumn(name = "cd_turma")
+	private Turma turma;
+
 	@ManyToOne
 	@JoinColumn(name = "cd_matricula_aluno")
 	private Aluno aluno;
 	
-	@Column(name = "cd_nota_boletim")
-	private Integer nota;
-	
+	@ManyToOne
+	@JoinColumn(name = "cd_frequencia_aluno")
+	private Frequencia frequencia;
+
 	@Column(name = "dt_criado_em")
 	private LocalDate criadoEm;
-	
+
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 	
 	@Deprecated
-	public Boletim() {
-	}
+	public OcorrenciaDiario() {}
 
-	public Boletim(Long codigo, Disciplina disciplina, Aluno aluno, Integer nota, LocalDate criadoEm) {
+	public OcorrenciaDiario(Long codigo, Turma turma, Aluno aluno, LocalDate criadoEm) {
 		this.codigo = codigo;
-		this.disciplina = disciplina;
+		this.turma = turma;
 		this.aluno = aluno;
-		this.nota = nota;
 		this.criadoEm = criadoEm;
 	}
 
@@ -56,16 +55,12 @@ public class Boletim {
 		return codigo;
 	}
 
-	public Disciplina getDisciplina() {
-		return disciplina;
+	public Turma getTurma() {
+		return turma;
 	}
 
 	public Aluno getAluno() {
 		return aluno;
-	}
-
-	public Integer getNota() {
-		return nota;
 	}
 
 	public LocalDate getCriadoEm() {
@@ -79,15 +74,15 @@ public class Boletim {
 	public void setAtualizadoEm(LocalDate atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
 	}
-
-	public void setDisciplina(Disciplina disciplina) {
-		this.disciplina = disciplina;
-	}
-
+	
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
 	}
-
+	
+	public void setTurma(Turma turma) {
+		this.turma = turma;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -104,7 +99,7 @@ public class Boletim {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Boletim other = (Boletim) obj;
+		OcorrenciaDiario other = (OcorrenciaDiario) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -112,4 +107,5 @@ public class Boletim {
 			return false;
 		return true;
 	}
+
 }
