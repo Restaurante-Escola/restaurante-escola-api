@@ -26,6 +26,9 @@ public class Aluno {
 
 	@Column(name = "nm_aluno")
 	private String nome;
+	
+	@Column(name = "nm_social_aluno")
+	private String nomeSocial;
 
 	@Column(name = "cd_idade_aluno")
 	private Integer idade;
