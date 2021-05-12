@@ -2,10 +2,13 @@ package br.com.restaurante.modelo;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.sun.istack.NotNull;
 
 /**
  * Classe que representa a entidade Feriado
@@ -15,10 +18,19 @@ import javax.persistence.Id;
 @Entity
 public class Feriado {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NotNull
+	@Column(name = "cd_feriado")
 	private Long codigo;
+	
+	@Column(name = "dt_feriado")
 	private LocalDate data;
+	
+	@Column(name = "dt_criado_em")
 	private LocalDate criadoEm;
+
+	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 	
 	@Deprecated
