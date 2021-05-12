@@ -139,7 +139,7 @@ public class Aluno {
 	public Aluno() {
 	}
 
-	public Aluno(Long matricula, String nome, Integer idade, LocalDate dataNascimento, String endereco, String cidade,
+	public Aluno(Long matricula, String nome, String nomeSocial,Integer idade, LocalDate dataNascimento, String endereco, String cidade,
 			String bairro, String observacaoEndereco, String nomePai, String nomeMae, String telefoneFixo,
 			String telefoneCelular, String email, Boolean alergia, Boolean alergiaRemedio, Boolean alergiaAlimento,
 			Boolean alergiaOutros, String especificacaoAlergia, Boolean hipertensao, Boolean hipotensao,
@@ -148,6 +148,7 @@ public class Aluno {
 			String sapato, LocalDate criadoEm) {
 		this.matricula = matricula;
 		this.nome = nome;
+		this.nomeSocial = nomeSocial;
 		this.idade = idade;
 		this.dataNascimento = dataNascimento;
 		this.endereco = endereco;
@@ -185,6 +186,10 @@ public class Aluno {
 
 	public String getNome() {
 		return nome;
+	}
+	
+	public String getNomeSocial() {
+		return nomeSocial;
 	}
 
 	public Integer getIdade() {
