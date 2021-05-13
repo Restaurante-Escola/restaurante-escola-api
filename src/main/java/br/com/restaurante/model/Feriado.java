@@ -1,4 +1,4 @@
-package br.com.restaurante.modelo;
+package br.com.restaurante.model;
 
 import java.time.LocalDate;
 
@@ -10,11 +10,6 @@ import javax.persistence.Id;
 
 import com.sun.istack.NotNull;
 
-/**
- * Classe que representa a entidade Feriado
- *
- * @author Gabriel Romano
- */
 @Entity
 public class Feriado {
 

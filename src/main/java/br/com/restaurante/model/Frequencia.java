@@ -1,4 +1,4 @@
-package br.com.restaurante.modelo;
+package br.com.restaurante.model;
 
 import java.time.LocalDate;
 import java.util.List;

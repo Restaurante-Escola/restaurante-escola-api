@@ -1,4 +1,4 @@
-package br.com.restaurante.modelo;
+package br.com.restaurante.model;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,11 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-/**
- * Classe que representa a entidade Aluno
- *
- * @author Gabriel Romano
- */
+import com.sun.istack.NotNull;
 
 @Entity
 public class Aluno {
@@ -22,6 +18,7 @@ public class Aluno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cd_matricula_aluno")
+	@NotNull
 	private Long matricula;
 
 	@Column(name = "nm_aluno")

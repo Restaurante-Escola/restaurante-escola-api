@@ -1,4 +1,4 @@
-package br.com.restaurante.modelo;
+package br.com.restaurante.model;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,11 +13,6 @@ import javax.persistence.OneToMany;
 
 import com.sun.istack.NotNull;
 
-/**
- * Classe que representa a entidade Turma
- *
- * @author Gabriel Romano
- */
 @Entity
 public class Turma {
 
