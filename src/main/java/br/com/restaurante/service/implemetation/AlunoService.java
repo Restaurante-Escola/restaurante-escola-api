@@ -55,4 +55,9 @@ public class AlunoService implements InterfaceService<Aluno> {
 		}
 		return false;
 	}
+
+	public List<Aluno> findByTurma(String codigoTurma) {
+		// TEM QUE IMPLEMENTAR
+		return null;
+	}
 }
