@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.restaurante.controller.dto.AlunoDto;
+import br.com.restaurante.controller.form.AlunoForm;
 import br.com.restaurante.controller.form.AtualizacaoAlunoForm;
 import br.com.restaurante.model.Aluno;
 import br.com.restaurante.service.implemetation.AlunoService;
@@ -47,7 +49,20 @@ public class AlunoController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	//O spring verifica se a role do usuario é MODERADOR, se nao for, ele nem entra no remover
+	@PostMapping
+	@Transactional 
+	public ResponseEntity<AlunoDto> cadastrar(@RequestBody /*@Valid*/ AlunoForm form /*, UriComponentsBuilder uriBuilder*/) { //o @RequestBody indica ao Spring que os parâmetros enviados no corpo da requisição devem ser atribuídos ao parâmetro do método
+		Aluno aluno = form.converter();
+		service.create(aluno);
+		return ResponseEntity.ok().build();
+		
+		/* abaixo é o jeito moderno/mais correto, implementar depois se possivel */
+
+//		URI uri = uriBuilder.path("/alunos/{matricula}").buildAndExpand(aluno.getMatricula()).toUri(); //para devolver o codigo 201 http, devolvendo o tipo do objeto criado
+//		return ResponseEntity.created(uri).body(new AlunoDto(aluno));
+	}
+	
+	//Quando configurado o spring security, o spring verifica se a role do usuario é MODERADOR, se nao for, ele nem entra no remover
 	@DeleteMapping("/{matricula}")
 	@Transactional 
 	public ResponseEntity<?> remover(@PathVariable Long matricula) {
