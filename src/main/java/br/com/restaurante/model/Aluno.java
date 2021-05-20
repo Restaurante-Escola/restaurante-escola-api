@@ -129,8 +129,8 @@ public class Aluno {
 	@OneToMany(mappedBy = "aluno")
 	private List<OcorrenciaDiario> ocorrenciaDiario;
 
-	@OneToMany
-	private List<Turma> turma;
+	@OneToMany(mappedBy = "aluno")
+	private List<AlunoTurma> turma;
 	
 	@Deprecated
 	public Aluno() {
@@ -337,11 +337,11 @@ public class Aluno {
 		this.frequencias = frequencias;
 	}
 
-	public List<Turma> getTurma() {
+	public List<AlunoTurma> getTurma() {
 		return turma;
 	}
 
-	public void setTurma(List<Turma> turma) {
+	public void setTurma(List<AlunoTurma> turma) {
 		this.turma = turma;
 	}
 

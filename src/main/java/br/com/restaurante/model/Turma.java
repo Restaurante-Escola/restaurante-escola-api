@@ -28,13 +28,15 @@ public class Turma {
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 
-	@OneToMany
-	@JoinColumn(name = "turmas") // para nao criar outra tabela intermediaria, dessa vez chamadaturma_disciplinas
-	private List<Disciplina> disciplinas;
-
-	@OneToMany
-	@JoinColumn(name = "turmas")
-	private List<Aluno> alunos;
+//	@OneToMany
+//	@JoinColumn(name = "turmas") // para nao criar outra tabela intermediaria, dessa vez chamadaturma_disciplinas
+//	private List<Disciplina> disciplinas;
+	
+	@OneToMany(mappedBy = "turma")
+	private List<AlunoTurma> turma;
+	
+	@OneToMany(mappedBy = "turma")
+	private List<DisciplinaTurma> turmaDisicplina;
 
 	@OneToMany(mappedBy = "turma")
 	private List<Advertencia> advertencias;
@@ -83,20 +85,20 @@ public class Turma {
 		this.advertencias = advertencias;
 	}
 
-	public void setDisciplinas(List<Disciplina> disciplinas) {
-		this.disciplinas = disciplinas;
+//	public void setDisciplinas(List<Disciplina> disciplinas) {
+//		this.disciplinas = disciplinas;
+//	}
+//
+//	public List<Disciplina> getDisciplinas() {
+//		return disciplinas;
+//	}
+
+	public List<AlunoTurma> getTurma() {
+		return turma;
 	}
 
-	public List<Disciplina> getDisciplinas() {
-		return disciplinas;
-	}
-
-	public void setAlunos(List<Aluno> alunos) {
-		this.alunos = alunos;
-	}
-
-	public List<Aluno> getAlunos() {
-		return alunos;
+	public void setTurma(List<AlunoTurma> turma) {
+		this.turma = turma;
 	}
 
 	public List<Frequencia> getFrequencias() {
@@ -113,6 +115,14 @@ public class Turma {
 
 	public void setOcorrenciaDiario(List<OcorrenciaDiario> ocorrenciaDiario) {
 		this.ocorrenciaDiario = ocorrenciaDiario;
+	}
+	
+	public List<DisciplinaTurma> getTurmaDisicplina() {
+		return turmaDisicplina;
+	}
+
+	public void setTurmaDisicplina(List<DisciplinaTurma> turmaDisicplina) {
+		this.turmaDisicplina = turmaDisicplina;
 	}
 
 	@Override

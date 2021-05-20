@@ -1,48 +1,45 @@
 package br.com.restaurante.model;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-import com.sun.istack.NotNull;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Disciplina {
+public class DisciplinaTurma {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cd_disciplina")
-	@NotNull
+	@Column(name = "cd_disciplina_turma")
 	private Long codigo;
-	
-	@Column(name = "nm_disciplina")
-	private String nome;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "cd_disciplina")
+	private Disciplina disciplina;
+
+	@ManyToOne
+	@JoinColumn(name = "cd_turma")
+	private Turma turma;
+
 	@Column(name = "dt_criado_em")
 	private LocalDate criadoEm;
-	
+
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 
-	@OneToMany(mappedBy = "disciplina")
-	private List<DisciplinaTurma> disciplinaTurma;
-
-	@OneToMany(mappedBy = "disciplina")
-	private List<Boletim> boletins;
-
 	@Deprecated
-	public Disciplina() {
+	public DisciplinaTurma() {
 	}
 
-	public Disciplina(Long codigo, String nome, LocalDate criadoEm) {
+	public DisciplinaTurma(Long codigo, Disciplina disciplina, Turma turma, LocalDate criadoEm) {
 		this.codigo = codigo;
-		this.nome = nome;
+		this.disciplina = disciplina;
+		this.turma = turma;
 		this.criadoEm = criadoEm;
 	}
 
@@ -50,38 +47,39 @@ public class Disciplina {
 		return codigo;
 	}
 
-	public String getNome() {
-		return nome;
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public Disciplina getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
+
+	public Turma getTurma() {
+		return turma;
+	}
+
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
 
 	public LocalDate getCriadoEm() {
 		return criadoEm;
 	}
 
-	public LocalDate getAtualizadoEm() {
-		return atualizadoEm;
-	}
-
-	public List<Boletim> getBoletins() {
-		return boletins;
-	}
-
 	public void setAtualizadoEm(LocalDate atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
 	}
 
-	public void setBoletins(List<Boletim> boletins) {
-		this.boletins = boletins;
+	public LocalDate getAtualizadoEm() {
+		return atualizadoEm;
 	}
 
-	public List<DisciplinaTurma> getDisciplinaTurma() {
-		return disciplinaTurma;
-	}
-
-	public void setDisciplinaTurma(List<DisciplinaTurma> disciplinaTurma) {
-		this.disciplinaTurma = disciplinaTurma;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -98,7 +96,7 @@ public class Disciplina {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Disciplina other = (Disciplina) obj;
+		DisciplinaTurma other = (DisciplinaTurma) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -106,5 +104,4 @@ public class Disciplina {
 			return false;
 		return true;
 	}
-
 }
