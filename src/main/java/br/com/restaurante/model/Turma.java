@@ -3,12 +3,12 @@ package br.com.restaurante.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import com.sun.istack.NotNull;
@@ -21,10 +21,19 @@ public class Turma {
 	@Column(name = "cd_turma")
 	@NotNull
 	private Long codigo;
+	
 	@Column(name = "cd_numero_turma")
 	private Integer numero;
+	
+	@Column(name = "dt_inicio_turma")
+	private LocalDate inicioTurma;
+	
+	@Column(name = "dt_fim_turma")
+	private LocalDate fimTurma;
+	
 	@Column(name = "dt_criado_em")
-	private LocalDate criadoEm;
+	private LocalDate criadoEm = LocalDate.now();
+	
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 
@@ -32,31 +41,17 @@ public class Turma {
 //	@JoinColumn(name = "turmas") // para nao criar outra tabela intermediaria, dessa vez chamadaturma_disciplinas
 //	private List<Disciplina> disciplinas;
 	
-	@OneToMany(mappedBy = "turma")
+	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
 	private List<AlunoTurma> turma;
 	
-	@OneToMany(mappedBy = "turma")
+	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
 	private List<DisciplinaTurma> turmaDisicplina;
 
-	@OneToMany(mappedBy = "turma")
-	private List<Advertencia> advertencias;
-
-	@OneToMany(mappedBy = "turma")
+	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
 	private List<Frequencia> frequencias;
 
-	@OneToMany(mappedBy = "turma")
-	private List<OcorrenciaDiario> ocorrenciaDiario;
-
-	@Deprecated
-	public Turma() {
-	}
-
-	public Turma(Long codigo, Integer numero, LocalDate criadoEm) {
-		this.codigo = codigo;
-		this.numero = numero;
-		this.criadoEm = criadoEm;
-	}
-
+	public Turma() {}
+	
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -75,14 +70,6 @@ public class Turma {
 
 	public void setAtualizadoEm(LocalDate atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
-	}
-
-	public List<Advertencia> getAdvertencias() {
-		return advertencias;
-	}
-
-	public void setAdvertencias(List<Advertencia> advertencias) {
-		this.advertencias = advertencias;
 	}
 
 //	public void setDisciplinas(List<Disciplina> disciplinas) {
@@ -109,20 +96,40 @@ public class Turma {
 		this.frequencias = frequencias;
 	}
 
-	public List<OcorrenciaDiario> getOcorrenciaDiario() {
-		return ocorrenciaDiario;
-	}
-
-	public void setOcorrenciaDiario(List<OcorrenciaDiario> ocorrenciaDiario) {
-		this.ocorrenciaDiario = ocorrenciaDiario;
-	}
-	
 	public List<DisciplinaTurma> getTurmaDisicplina() {
 		return turmaDisicplina;
 	}
 
 	public void setTurmaDisicplina(List<DisciplinaTurma> turmaDisicplina) {
 		this.turmaDisicplina = turmaDisicplina;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+
+	public void setCriadoEm(LocalDate criadoEm) {
+		this.criadoEm = criadoEm;
+	}
+
+	public LocalDate getInicioTurma() {
+		return inicioTurma;
+	}
+
+	public void setInicioTurma(LocalDate inicioTurma) {
+		this.inicioTurma = inicioTurma;
+	}
+
+	public LocalDate getFimTurma() {
+		return fimTurma;
+	}
+
+	public void setFimTurma(LocalDate fimTurma) {
+		this.fimTurma = fimTurma;
 	}
 
 	@Override

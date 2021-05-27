@@ -1,26 +1,37 @@
 package br.com.restaurante.controller.dto;
 
 import java.util.List;
-
-import org.springframework.http.ResponseEntity;
+import java.util.stream.Collectors;
 
 import br.com.restaurante.model.Aluno;
 
 //classe apenas para representar o que devolvemos pro cliente por JSON
 public class AlunoDto {
+	
+	//colocar atributos que devolvemos pro cliente
+	
+	private String nome;
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
 	public AlunoDto(Aluno aluno) {
+		this.nome = aluno.getNome();
 		// TEM QUE IMPLEMENTAR
 	}
 
-	public static ResponseEntity<AlunoDto> converter(List<Aluno> alunos) {
+	public static List<AlunoDto> converter(List<Aluno> alunos) {
 		// TEM QUE IMPLEMENTAR
-		return null;
+		return alunos.stream().map(AlunoDto::new).collect(Collectors.toList());
 	}
 
-	public static ResponseEntity<AlunoDto> converter(Aluno aluno) {
-		// TEM QUE IMPLEMENTAR
-		return null;
+	public static AlunoDto converter(Aluno aluno) {
+		return new AlunoDto(aluno);
 	}
 
 }

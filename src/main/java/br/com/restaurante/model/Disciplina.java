@@ -3,6 +3,7 @@ package br.com.restaurante.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,26 +26,18 @@ public class Disciplina {
 	private String nome;
 	
 	@Column(name = "dt_criado_em")
-	private LocalDate criadoEm;
+	private LocalDate criadoEm = LocalDate.now();
 	
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 
-	@OneToMany(mappedBy = "disciplina")
+	@OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL)
 	private List<DisciplinaTurma> disciplinaTurma;
 
-	@OneToMany(mappedBy = "disciplina")
+	@OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL)
 	private List<Boletim> boletins;
 
-	@Deprecated
-	public Disciplina() {
-	}
-
-	public Disciplina(Long codigo, String nome, LocalDate criadoEm) {
-		this.codigo = codigo;
-		this.nome = nome;
-		this.criadoEm = criadoEm;
-	}
+	public Disciplina() {}
 
 	public Long getCodigo() {
 		return codigo;
@@ -80,6 +73,18 @@ public class Disciplina {
 
 	public void setDisciplinaTurma(List<DisciplinaTurma> disciplinaTurma) {
 		this.disciplinaTurma = disciplinaTurma;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setCriadoEm(LocalDate criadoEm) {
+		this.criadoEm = criadoEm;
 	}
 
 	@Override

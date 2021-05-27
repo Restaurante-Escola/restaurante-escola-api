@@ -2,6 +2,7 @@ package br.com.restaurante.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,40 +24,26 @@ public class OcorrenciaDiario {
 	@NotNull
 	private Long codigo;
 
-	@ManyToOne
-	@JoinColumn(name = "cd_turma")
-	private Turma turma;
-
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_matricula_aluno")
 	private Aluno aluno;
-	
-	@ManyToOne
-	@JoinColumn(name = "cd_frequencia_aluno")
-	private Frequencia frequencia;
+
+	@Column(name = "ds_ocorrencia")
+	private String ocorrencia;
+
+	@Column(name = "dt_ocorrencia")
+	private LocalDate dataOcorrencia;
 
 	@Column(name = "dt_criado_em")
-	private LocalDate criadoEm;
+	private LocalDate criadoEm = LocalDate.now();
 
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
-	
-	@Deprecated
-	public OcorrenciaDiario() {}
 
-	public OcorrenciaDiario(Long codigo, Turma turma, Aluno aluno, LocalDate criadoEm) {
-		this.codigo = codigo;
-		this.turma = turma;
-		this.aluno = aluno;
-		this.criadoEm = criadoEm;
-	}
+	public OcorrenciaDiario() {}
 
 	public Long getCodigo() {
 		return codigo;
-	}
-
-	public Turma getTurma() {
-		return turma;
 	}
 
 	public Aluno getAluno() {
@@ -74,15 +61,35 @@ public class OcorrenciaDiario {
 	public void setAtualizadoEm(LocalDate atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
 	}
-	
+
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
 	}
-	
-	public void setTurma(Turma turma) {
-		this.turma = turma;
+
+	public String getOcorrencia() {
+		return ocorrencia;
 	}
-	
+
+	public void setOcorrencia(String ocorrencia) {
+		this.ocorrencia = ocorrencia;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public void setCriadoEm(LocalDate criadoEm) {
+		this.criadoEm = criadoEm;
+	}
+
+	public LocalDate getDataOcorrencia() {
+		return dataOcorrencia;
+	}
+
+	public void setDataOcorrencia(LocalDate dataOcorrencia) {
+		this.dataOcorrencia = dataOcorrencia;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

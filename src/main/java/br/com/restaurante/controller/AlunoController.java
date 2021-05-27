@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.restaurante.controller.dto.AlunoDto;
 import br.com.restaurante.controller.form.AlunoForm;
-import br.com.restaurante.controller.form.AtualizacaoAlunoForm;
 import br.com.restaurante.model.Aluno;
 import br.com.restaurante.service.implemetation.AlunoService;
 
@@ -30,36 +29,30 @@ public class AlunoController {
 	private AlunoService service;
 	
 	@GetMapping //traz uma lista de alunos, se tiver o codigo da turma, traz apenas os alunos daquela turma
-	public ResponseEntity<AlunoDto> lista(@RequestParam(required = false) String codigoTurma) { 
-		if (codigoTurma == null) {
-			List<Aluno> alunos = service.findAll();
-			return AlunoDto.converter(alunos); // O Spring faz a conversão do objeto para JSON automaticamente, com o uso da biblioteca Jackson.
-		} else {
+	public ResponseEntity<List<AlunoDto>> lista(@RequestParam(required = false) String codigoTurma) { 
+		if (codigoTurma != null) {
 			List<Aluno> alunos = service.findByTurma(codigoTurma);
-			 return AlunoDto.converter(alunos); 
+			return ResponseEntity.ok(AlunoDto.converter(alunos));
 		}
+		List<Aluno> alunos = service.findAll();
+		return ResponseEntity.ok(AlunoDto.converter(alunos)); // O Spring faz a conversão do objeto para JSON automaticamente, com o uso da biblioteca Jackson.
 	}
 	
 	@GetMapping("/{matricula}")
-	public ResponseEntity<?> lista(@PathVariable Long matricula) { 
+	public ResponseEntity<AlunoDto> lista(@PathVariable Long matricula) { 
 		if (service.findById(matricula) != null) {
 			Aluno aluno = service.findById(matricula);
-			return AlunoDto.converter(aluno); 
+			return ResponseEntity.ok(AlunoDto.converter(aluno));
 		} 
 		return ResponseEntity.notFound().build();
 	}
 	
 	@PostMapping
 	@Transactional 
-	public ResponseEntity<AlunoDto> cadastrar(@RequestBody /*@Valid*/ AlunoForm form /*, UriComponentsBuilder uriBuilder*/) { //o @RequestBody indica ao Spring que os parâmetros enviados no corpo da requisição devem ser atribuídos ao parâmetro do método
+	public ResponseEntity<?> cadastrar(@RequestBody /*@Valid*/ AlunoForm form /*, UriComponentsBuilder uriBuilder*/) { //o @RequestBody indica ao Spring que os parâmetros enviados no corpo da requisição devem ser atribuídos ao parâmetro do método
 		Aluno aluno = form.converter();
 		service.create(aluno);
 		return ResponseEntity.ok().build();
-		
-		/* abaixo é o jeito moderno/mais correto, implementar depois se possivel */
-
-//		URI uri = uriBuilder.path("/alunos/{matricula}").buildAndExpand(aluno.getMatricula()).toUri(); //para devolver o codigo 201 http, devolvendo o tipo do objeto criado
-//		return ResponseEntity.created(uri).body(new AlunoDto(aluno));
 	}
 	
 	//Quando configurado o spring security, o spring verifica se a role do usuario é MODERADOR, se nao for, ele nem entra no remover
@@ -75,11 +68,12 @@ public class AlunoController {
 	
 	@PutMapping("/{matricula}")
 	@Transactional //avisa pro spring que é pra commitar a transacao, Métodos anotados com @Transactional serão executados dentro de um contexto transacional, Ao finalizar o método, o Spring efetuará o commit automático da transação, caso nenhuma exception tenha sido lançada.
-	public ResponseEntity<AlunoDto> atualizar(@PathVariable Long matricula, @RequestBody /*@Valid*/ AtualizacaoAlunoForm form) { //preciso colocar no pom a dependencia de validacao
-		if (service.findById(matricula) != null) {
-			Aluno aluno = form.atualizar(matricula, service);
-			AlunoDto dto = new AlunoDto(aluno);
-			return ResponseEntity.ok(dto); //o ok retorna 200 com o dto no body da response
+	public ResponseEntity<?> atualizar(@PathVariable Long matricula, @RequestBody /*@Valid*/ AlunoForm form) { //preciso colocar no pom a dependencia de validacao
+		Aluno aluno = service.findById(matricula);
+		if (aluno != null) {
+			Aluno alunoAtualizado = form.converter();
+			service.update(alunoAtualizado);
+			return ResponseEntity.ok().build(); //o ok retorna 200 com o dto no body da response
 		}
 		return ResponseEntity.notFound().build();
 	}

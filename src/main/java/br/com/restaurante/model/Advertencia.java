@@ -2,6 +2,7 @@ package br.com.restaurante.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,31 +14,28 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Advertencia {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cd_advertencia")
 	private Long codigo;
-	@ManyToOne
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_matricula_aluno")
 	private Aluno aluno;
-	@ManyToOne
-	@JoinColumn(name = "cd_turma")
-	private Turma turma;
+
+	@Column(name = "dt_advertencia")
+	private String dataDescricao;
+
 	@Column(name = "ds_advertencia")
 	private String descricao;
+
 	@Column(name = "dt_criado_em")
-	private LocalDate criadoEm;
+	private LocalDate criadoEm = LocalDate.now();
+
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
-	
-	public Advertencia() {}
 
-	public Advertencia(Long codigo, Aluno aluno, Turma turma, String descricao, LocalDate criadoEm) {
-		this.codigo = codigo;
-		this.aluno = aluno;
-		this.turma = turma;
-		this.descricao = descricao;
-		this.criadoEm = criadoEm;
-	}
+	public Advertencia() {}
 
 	public Long getCodigo() {
 		return codigo;
@@ -45,10 +43,6 @@ public class Advertencia {
 
 	public Aluno getAluno() {
 		return aluno;
-	}
-
-	public Turma getTurma() {
-		return turma;
 	}
 
 	public String getDescricao() {
@@ -65,6 +59,30 @@ public class Advertencia {
 
 	public void setAtualizadoEm(LocalDate atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public void setCriadoEm(LocalDate criadoEm) {
+		this.criadoEm = criadoEm;
+	}
+
+	public String getDataDescricao() {
+		return dataDescricao;
+	}
+
+	public void setDataDescricao(String dataDescricao) {
+		this.dataDescricao = dataDescricao;
 	}
 
 	@Override

@@ -1,16 +1,17 @@
 package br.com.restaurante.model;
 
 import java.time.LocalDate;
-import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
@@ -24,42 +25,29 @@ public class Frequencia {
 	@Column(name = "cd_frequencia")
 	@NotNull
 	private Long codigo;
-
-	@ManyToOne
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "cd_status_presenca")
+	private StatusPresenca status;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_turma")
 	private Turma turma;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_matricula_aluno")
 	private Aluno aluno;
 	
-	@OneToMany(mappedBy = "frequencia")
-	private List<OcorrenciaDiario> ocorrenciaDiario;
-
 	@Column(name = "dt_aula")
 	private LocalDate dataAula;
 
-	@Column(name = "ic_aluno_presente")
-	private LocalDate alunoPresente;
-
 	@Column(name = "dt_criado_em")
-	private LocalDate criadoEm;
+	private LocalDate criadoEm = LocalDate.now();
 
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 	
-	@Deprecated
 	public Frequencia() {}
-
-	public Frequencia(Long codigo, Turma turma, Aluno aluno, LocalDate dataAula, LocalDate alunoPresente,
-			LocalDate criadoEm) {
-		this.codigo = codigo;
-		this.turma = turma;
-		this.aluno = aluno;
-		this.dataAula = dataAula;
-		this.alunoPresente = alunoPresente;
-		this.criadoEm = criadoEm;
-	}
 
 	public Long getCodigo() {
 		return codigo;
@@ -75,10 +63,6 @@ public class Frequencia {
 
 	public LocalDate getDataAula() {
 		return dataAula;
-	}
-
-	public LocalDate getAlunoPresente() {
-		return alunoPresente;
 	}
 
 	public LocalDate getCriadoEm() {
@@ -101,14 +85,18 @@ public class Frequencia {
 		this.turma = turma;
 	}
 	
-	public List<OcorrenciaDiario> getOcorrenciaDiario() {
-		return ocorrenciaDiario;
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
 
-	public void setOcorrenciaDiario(List<OcorrenciaDiario> ocorrenciaDiario) {
-		this.ocorrenciaDiario = ocorrenciaDiario;
+	public void setDataAula(LocalDate dataAula) {
+		this.dataAula = dataAula;
 	}
-	
+
+	public void setCriadoEm(LocalDate criadoEm) {
+		this.criadoEm = criadoEm;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

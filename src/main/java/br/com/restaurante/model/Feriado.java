@@ -23,21 +23,12 @@ public class Feriado {
 	private LocalDate data;
 	
 	@Column(name = "dt_criado_em")
-	private LocalDate criadoEm;
+	private LocalDate criadoEm = LocalDate.now();
 
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 	
-	@Deprecated
-	public Feriado() {
-		
-	}
-
-	public Feriado(Long codigo, LocalDate data, LocalDate criadoEm) {
-		this.codigo = codigo;
-		this.data = data;
-		this.criadoEm = criadoEm;
-	}
+	public Feriado() {}
 
 	public Long getCodigo() {
 		return codigo;
@@ -59,6 +50,18 @@ public class Feriado {
 		this.atualizadoEm = atualizadoEm;
 	}
 	
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+	public void setCriadoEm(LocalDate criadoEm) {
+		this.criadoEm = criadoEm;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

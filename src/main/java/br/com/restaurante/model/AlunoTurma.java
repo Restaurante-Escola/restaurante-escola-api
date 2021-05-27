@@ -2,6 +2,7 @@ package br.com.restaurante.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,29 +19,22 @@ public class AlunoTurma {
 	@Column(name = "cd_aluno_turma")
 	private Long codigo;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_matricula_aluno")
 	private Aluno aluno;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_turma")
 	private Turma turma;
 	
 	@Column(name = "dt_criado_em")
-	private LocalDate criadoEm;
+	private LocalDate criadoEm = LocalDate.now();
 	
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 	
 	@Deprecated
-	public AlunoTurma() {
-	}
-
-	public AlunoTurma(Long codigo, Aluno aluno, LocalDate criadoEm) {
-		this.codigo = codigo;
-		this.aluno = aluno;
-		this.criadoEm = criadoEm;
-	}
+	public AlunoTurma() {}
 
 	public Long getCodigo() {
 		return codigo;
@@ -72,6 +66,14 @@ public class AlunoTurma {
 
 	public void setTurma(Turma turma) {
 		this.turma = turma;
+	}
+	
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public void setCriadoEm(LocalDate criadoEm) {
+		this.criadoEm = criadoEm;
 	}
 
 	@Override

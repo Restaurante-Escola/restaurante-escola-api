@@ -3,6 +3,7 @@ package br.com.restaurante.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,41 +25,77 @@ public class Aluno {
 	@Column(name = "nm_aluno")
 	private String nome;
 	
-	@Column(name = "nm_social_aluno")
+	@Column(name = "nm_social")
 	private String nomeSocial;
 
 	@Column(name = "cd_idade_aluno")
 	private Integer idade;
+	
+	@Column(name = "nm_estado_civil_aluno")
+	private String estadoCivil;
 
 	@Column(name = "dt_nascimento_aluno")
 	private LocalDate dataNascimento;
-
-	@Column(name = "nm_endereco_aluno")
-	private String endereco;
-
-	@Column(name = "nm_cidade_aluno")
-	private String cidade;
-
-	@Column(name = "nm_bairro_aluno")
-	private String bairro;
-
-	@Column(name = "ds_obs_endereco_aluno")
-	private String observacaoEndereco;
-
-	@Column(name = "nm_pai_aluno")
-	private String nomePai;
-
-	@Column(name = "nm_mae_aluno")
-	private String nomeMae;
-
-	@Column(name = "cd_telefone_aluno_fixo")
-	private String telefoneFixo;
+	
+	@Column(name = "cd_rg_aluno")
+	private String rg;
+	
+	@Column(name = "cd_cpf_aluno")
+	private String cpf;
 
 	@Column(name = "cd_telefone_celular_aluno")
 	private String telefoneCelular;
+	
+	@Column(name = "cd_whatsapp_aluno")
+	private String numeroWhatsapp;
+	
+	@Column(name = "cd_telefone_recado_aluno")
+	private String telefoneRecado;
+	
+	@Column(name = "nm_pessoa_tel_recado_aluno")
+	private String nomePessoaTelefoneRecado;
+	
+	@Column(name = "nm_endereco_aluno")
+	private String endereco;
 
 	@Column(name = "nm_email_aluno")
 	private String email;
+	
+	@Column(name = "nm_responsavel_aluno")
+	private String nomeResponsavel;
+	
+	@Column(name = "nm_escolaridade_aluno")
+	private String escolaridade;
+	
+	@Column(name = "nm_escola_fundamental_aluno")
+	private String escolaFundamental;
+	
+	@Column(name = "nm_escola_medio_aluno")
+	private String escolaMedio;
+	
+	@Column(name = "cd_ano_medio_escolaridade_aluno")
+	private String anoMedio;
+	
+	@Column(name = "cd_ano_formacao_medio_escolaridade_aluno")
+	private String anoFormacaoMedio;
+	
+	@Column(name = "cd_camiseta_aluno")
+	private String camiseta;
+
+	@Column(name = "cd_sapato_aluno")
+	private String sapato;
+
+	@Column(name = "nm_servico_atendimento_aluno")
+	private String servicoAtendimento;
+	
+	@Column(name = "nm_unidade_aluno")
+	private String unidade;
+	
+	@Column(name = "nm_tecnico_aluno")
+	private String tecnico;
+	
+	@Column(name = "cd_telefone_tecnico_aluno")
+	private String telefoneTecnico;
 
 	@Column(name = "ic_alergia_aluno")
 	private Boolean alergia;
@@ -98,223 +135,382 @@ public class Aluno {
 
 	@Column(name = "ic_fumante_aluno")
 	private Boolean fumante;
+	
+	@Column(name = "ds_medicamentos_uso_continuo")
+	private String medicamentosUsoContinuo;
 
 	@Column(name = "ds_obs_aluno")
 	private String observasao;
 
-	@Column(name = "ds_emergencia_aluno")
-	private String emergencia;
-
-	@Column(name = "cd_camiseta_aluno")
-	private String camiseta;
-
-	@Column(name = "cd_sapato_aluno")
-	private String sapato;
-
 	@Column(name = "dt_criado_em")
-	private LocalDate criadoEm;
+	private LocalDate criadoEm  = LocalDate.now();
 
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 
-	@OneToMany(mappedBy = "aluno")
+	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
 	private List<Advertencia> advertencias;
 
-	@OneToMany(mappedBy = "aluno")
+	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
 	private List<Boletim> boletins;
 
-	@OneToMany(mappedBy = "aluno")
+	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
 	private List<Frequencia> frequencias;
 	
-	@OneToMany(mappedBy = "aluno")
+	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
 	private List<OcorrenciaDiario> ocorrenciaDiario;
 
-	@OneToMany(mappedBy = "aluno")
+	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
 	private List<AlunoTurma> turma;
 	
-	@Deprecated
-	public Aluno() {
-	}
-
-	public Aluno(Long matricula, String nome, String nomeSocial,Integer idade, LocalDate dataNascimento, String endereco, String cidade,
-			String bairro, String observacaoEndereco, String nomePai, String nomeMae, String telefoneFixo,
-			String telefoneCelular, String email, Boolean alergia, Boolean alergiaRemedio, Boolean alergiaAlimento,
-			Boolean alergiaOutros, String especificacaoAlergia, Boolean hipertensao, Boolean hipotensao,
-			Boolean epilepsia, Boolean diabetes, Boolean problemaRenal, Boolean problemaOcular,
-			Boolean problemaRespiratorio, Boolean fumante, String observasao, String emergencia, String camiseta,
-			String sapato, LocalDate criadoEm) {
-		this.matricula = matricula;
-		this.nome = nome;
-		this.nomeSocial = nomeSocial;
-		this.idade = idade;
-		this.dataNascimento = dataNascimento;
-		this.endereco = endereco;
-		this.cidade = cidade;
-		this.bairro = bairro;
-		this.observacaoEndereco = observacaoEndereco;
-		this.nomePai = nomePai;
-		this.nomeMae = nomeMae;
-		this.telefoneFixo = telefoneFixo;
-		this.telefoneCelular = telefoneCelular;
-		this.email = email;
-		this.alergia = alergia;
-		this.alergiaRemedio = alergiaRemedio;
-		this.alergiaAlimento = alergiaAlimento;
-		this.alergiaOutros = alergiaOutros;
-		this.especificacaoAlergia = especificacaoAlergia;
-		this.hipertensao = hipertensao;
-		this.hipotensao = hipotensao;
-		this.epilepsia = epilepsia;
-		this.diabetes = diabetes;
-		this.problemaRenal = problemaRenal;
-		this.problemaOcular = problemaOcular;
-		this.problemaRespiratorio = problemaRespiratorio;
-		this.fumante = fumante;
-		this.observasao = observasao;
-		this.emergencia = emergencia;
-		this.camiseta = camiseta;
-		this.sapato = sapato;
-		this.criadoEm = criadoEm;
-	}
+	public Aluno() {}
 
 	public Long getMatricula() {
 		return matricula;
 	}
 
+	public void setMatricula(Long matricula) {
+		this.matricula = matricula;
+	}
+
 	public String getNome() {
 		return nome;
 	}
-	
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public String getNomeSocial() {
 		return nomeSocial;
+	}
+
+	public void setNomeSocial(String nomeSocial) {
+		this.nomeSocial = nomeSocial;
 	}
 
 	public Integer getIdade() {
 		return idade;
 	}
 
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+
+	public String getEstadoCivil() {
+		return estadoCivil;
+	}
+
+	public void setEstadoCivil(String estadoCivil) {
+		this.estadoCivil = estadoCivil;
+	}
+
 	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public String getEndereco() {
-		return endereco;
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
-	public String getCidade() {
-		return cidade;
+	public String getRg() {
+		return rg;
 	}
 
-	public String getBairro() {
-		return bairro;
+	public void setRg(String rg) {
+		this.rg = rg;
 	}
 
-	public String getObservacaoEndereco() {
-		return observacaoEndereco;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public String getNomePai() {
-		return nomePai;
-	}
-
-	public String getNomeMae() {
-		return nomeMae;
-	}
-
-	public String getTelefoneFixo() {
-		return telefoneFixo;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getTelefoneCelular() {
 		return telefoneCelular;
 	}
 
+	public void setTelefoneCelular(String telefoneCelular) {
+		this.telefoneCelular = telefoneCelular;
+	}
+
+	public String getNumeroWhatsapp() {
+		return numeroWhatsapp;
+	}
+
+	public void setNumeroWhatsapp(String numeroWhatsapp) {
+		this.numeroWhatsapp = numeroWhatsapp;
+	}
+
+	public String getTelefoneRecado() {
+		return telefoneRecado;
+	}
+
+	public void setTelefoneRecado(String telefoneRecado) {
+		this.telefoneRecado = telefoneRecado;
+	}
+
+	public String getNomePessoaTelefoneRecado() {
+		return nomePessoaTelefoneRecado;
+	}
+
+	public void setNomePessoaTelefoneRecado(String nomePessoaTelefoneRecado) {
+		this.nomePessoaTelefoneRecado = nomePessoaTelefoneRecado;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
 	public String getEmail() {
 		return email;
 	}
 
-	public Boolean getAlergia() {
-		return alergia;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public Boolean getAlergiaRemedio() {
-		return alergiaRemedio;
+	public String getNomeResponsavel() {
+		return nomeResponsavel;
 	}
 
-	public Boolean getAlergiaAlimento() {
-		return alergiaAlimento;
+	public void setNomeResponsavel(String nomeResponsavel) {
+		this.nomeResponsavel = nomeResponsavel;
 	}
 
-	public Boolean getAlergiaOutros() {
-		return alergiaOutros;
+	public String getEscolaridade() {
+		return escolaridade;
 	}
 
-	public String getEspecificacaoAlergia() {
-		return especificacaoAlergia;
+	public void setEscolaridade(String escolaridade) {
+		this.escolaridade = escolaridade;
 	}
 
-	public Boolean getHipertensao() {
-		return hipertensao;
+	public String getEscolaFundamental() {
+		return escolaFundamental;
 	}
 
-	public Boolean getHipotensao() {
-		return hipotensao;
+	public void setEscolaFundamental(String escolaFundamental) {
+		this.escolaFundamental = escolaFundamental;
 	}
 
-	public Boolean getEpilepsia() {
-		return epilepsia;
+	public String getEscolaMedio() {
+		return escolaMedio;
 	}
 
-	public Boolean getDiabetes() {
-		return diabetes;
+	public void setEscolaMedio(String escolaMedio) {
+		this.escolaMedio = escolaMedio;
 	}
 
-	public Boolean getProblemaRenal() {
-		return problemaRenal;
+	public String getAnoMedio() {
+		return anoMedio;
 	}
 
-	public Boolean getProblemaOcular() {
-		return problemaOcular;
+	public void setAnoMedio(String anoMedio) {
+		this.anoMedio = anoMedio;
 	}
 
-	public Boolean getProblemaRespiratorio() {
-		return problemaRespiratorio;
+	public String getAnoFormacaoMedio() {
+		return anoFormacaoMedio;
 	}
 
-	public Boolean getFumante() {
-		return fumante;
-	}
-
-	public String getObservasao() {
-		return observasao;
-	}
-
-	public String getEmergencia() {
-		return emergencia;
+	public void setAnoFormacaoMedio(String anoFormacaoMedio) {
+		this.anoFormacaoMedio = anoFormacaoMedio;
 	}
 
 	public String getCamiseta() {
 		return camiseta;
 	}
 
+	public void setCamiseta(String camiseta) {
+		this.camiseta = camiseta;
+	}
+
 	public String getSapato() {
 		return sapato;
+	}
+
+	public void setSapato(String sapato) {
+		this.sapato = sapato;
+	}
+
+	public String getServicoAtendimento() {
+		return servicoAtendimento;
+	}
+
+	public void setServicoAtendimento(String servicoAtendimento) {
+		this.servicoAtendimento = servicoAtendimento;
+	}
+
+	public String getUnidade() {
+		return unidade;
+	}
+
+	public void setUnidade(String unidade) {
+		this.unidade = unidade;
+	}
+
+	public String getTecnico() {
+		return tecnico;
+	}
+
+	public void setTecnico(String tecnico) {
+		this.tecnico = tecnico;
+	}
+
+	public String getTelefoneTecnico() {
+		return telefoneTecnico;
+	}
+
+	public void setTelefoneTecnico(String telefoneTecnico) {
+		this.telefoneTecnico = telefoneTecnico;
+	}
+
+	public Boolean getAlergia() {
+		return alergia;
+	}
+
+	public void setAlergia(Boolean alergia) {
+		this.alergia = alergia;
+	}
+
+	public Boolean getAlergiaRemedio() {
+		return alergiaRemedio;
+	}
+
+	public void setAlergiaRemedio(Boolean alergiaRemedio) {
+		this.alergiaRemedio = alergiaRemedio;
+	}
+
+	public Boolean getAlergiaAlimento() {
+		return alergiaAlimento;
+	}
+
+	public void setAlergiaAlimento(Boolean alergiaAlimento) {
+		this.alergiaAlimento = alergiaAlimento;
+	}
+
+	public Boolean getAlergiaOutros() {
+		return alergiaOutros;
+	}
+
+	public void setAlergiaOutros(Boolean alergiaOutros) {
+		this.alergiaOutros = alergiaOutros;
+	}
+
+	public String getEspecificacaoAlergia() {
+		return especificacaoAlergia;
+	}
+
+	public void setEspecificacaoAlergia(String especificacaoAlergia) {
+		this.especificacaoAlergia = especificacaoAlergia;
+	}
+
+	public Boolean getHipertensao() {
+		return hipertensao;
+	}
+
+	public void setHipertensao(Boolean hipertensao) {
+		this.hipertensao = hipertensao;
+	}
+
+	public Boolean getHipotensao() {
+		return hipotensao;
+	}
+
+	public void setHipotensao(Boolean hipotensao) {
+		this.hipotensao = hipotensao;
+	}
+
+	public Boolean getEpilepsia() {
+		return epilepsia;
+	}
+
+	public void setEpilepsia(Boolean epilepsia) {
+		this.epilepsia = epilepsia;
+	}
+
+	public Boolean getDiabetes() {
+		return diabetes;
+	}
+
+	public void setDiabetes(Boolean diabetes) {
+		this.diabetes = diabetes;
+	}
+
+	public Boolean getProblemaRenal() {
+		return problemaRenal;
+	}
+
+	public void setProblemaRenal(Boolean problemaRenal) {
+		this.problemaRenal = problemaRenal;
+	}
+
+	public Boolean getProblemaOcular() {
+		return problemaOcular;
+	}
+
+	public void setProblemaOcular(Boolean problemaOcular) {
+		this.problemaOcular = problemaOcular;
+	}
+
+	public Boolean getProblemaRespiratorio() {
+		return problemaRespiratorio;
+	}
+
+	public void setProblemaRespiratorio(Boolean problemaRespiratorio) {
+		this.problemaRespiratorio = problemaRespiratorio;
+	}
+
+	public Boolean getFumante() {
+		return fumante;
+	}
+
+	public void setFumante(Boolean fumante) {
+		this.fumante = fumante;
+	}
+
+	public String getMedicamentosUsoContinuo() {
+		return medicamentosUsoContinuo;
+	}
+
+	public void setMedicamentosUsoContinuo(String medicamentosUsoContinuo) {
+		this.medicamentosUsoContinuo = medicamentosUsoContinuo;
+	}
+
+	public String getObservasao() {
+		return observasao;
+	}
+
+	public void setObservasao(String observasao) {
+		this.observasao = observasao;
 	}
 
 	public LocalDate getCriadoEm() {
 		return criadoEm;
 	}
 
+	public void setCriadoEm(LocalDate criadoEm) {
+		this.criadoEm = criadoEm;
+	}
+
 	public LocalDate getAtualizadoEm() {
 		return atualizadoEm;
 	}
 
-	public List<Advertencia> getAdvertencias() {
-		return advertencias;
-	}
-
 	public void setAtualizadoEm(LocalDate atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
+	}
+
+	public List<Advertencia> getAdvertencias() {
+		return advertencias;
 	}
 
 	public void setAdvertencias(List<Advertencia> advertencias) {
@@ -337,6 +533,14 @@ public class Aluno {
 		this.frequencias = frequencias;
 	}
 
+	public List<OcorrenciaDiario> getOcorrenciaDiario() {
+		return ocorrenciaDiario;
+	}
+
+	public void setOcorrenciaDiario(List<OcorrenciaDiario> ocorrenciaDiario) {
+		this.ocorrenciaDiario = ocorrenciaDiario;
+	}
+
 	public List<AlunoTurma> getTurma() {
 		return turma;
 	}
@@ -345,14 +549,6 @@ public class Aluno {
 		this.turma = turma;
 	}
 
-	public List<OcorrenciaDiario> getOcorrenciaDiario() {
-		return ocorrenciaDiario;
-	}
-
-	public void setOcorrenciaDiario(List<OcorrenciaDiario> ocorrenciaDiario) {
-		this.ocorrenciaDiario = ocorrenciaDiario;
-	}
-	
 	@Override
 	public int hashCode() { 
 		final int prime = 31;
