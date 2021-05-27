@@ -17,7 +17,7 @@ import com.sun.istack.NotNull;
 public class Aluno {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cd_matricula_aluno")
 	@NotNull
 	private Long matricula;
@@ -164,6 +164,61 @@ public class Aluno {
 	private List<AlunoTurma> turma;
 	
 	public Aluno() {}
+	
+	public Aluno(Long matricula, String nome, String nomeSocial, Integer idade, String estadoCivil,
+			LocalDate dataNascimento, String rg, String cpf, String telefoneCelular, String numeroWhatsapp,
+			String telefoneRecado, String nomePessoaTelefoneRecado, String endereco, String email,
+			String nomeResponsavel, String escolaridade, String escolaFundamental, String escolaMedio, String anoMedio,
+			String anoFormacaoMedio, String camiseta, String sapato, String servicoAtendimento, String unidade,
+			String tecnico, String telefoneTecnico, Boolean alergia, Boolean alergiaRemedio, Boolean alergiaAlimento,
+			Boolean alergiaOutros, String especificacaoAlergia, Boolean hipertensao, Boolean hipotensao,
+			Boolean epilepsia, Boolean diabetes, Boolean problemaRenal, Boolean problemaOcular,
+			Boolean problemaRespiratorio, Boolean fumante, String medicamentosUsoContinuo, String observasao) {
+		super();
+		this.matricula = matricula;
+		this.nome = nome;
+		this.nomeSocial = nomeSocial;
+		this.idade = idade;
+		this.estadoCivil = estadoCivil;
+		this.dataNascimento = dataNascimento;
+		this.rg = rg;
+		this.cpf = cpf;
+		this.telefoneCelular = telefoneCelular;
+		this.numeroWhatsapp = numeroWhatsapp;
+		this.telefoneRecado = telefoneRecado;
+		this.nomePessoaTelefoneRecado = nomePessoaTelefoneRecado;
+		this.endereco = endereco;
+		this.email = email;
+		this.nomeResponsavel = nomeResponsavel;
+		this.escolaridade = escolaridade;
+		this.escolaFundamental = escolaFundamental;
+		this.escolaMedio = escolaMedio;
+		this.anoMedio = anoMedio;
+		this.anoFormacaoMedio = anoFormacaoMedio;
+		this.camiseta = camiseta;
+		this.sapato = sapato;
+		this.servicoAtendimento = servicoAtendimento;
+		this.unidade = unidade;
+		this.tecnico = tecnico;
+		this.telefoneTecnico = telefoneTecnico;
+		this.alergia = alergia;
+		this.alergiaRemedio = alergiaRemedio;
+		this.alergiaAlimento = alergiaAlimento;
+		this.alergiaOutros = alergiaOutros;
+		this.especificacaoAlergia = especificacaoAlergia;
+		this.hipertensao = hipertensao;
+		this.hipotensao = hipotensao;
+		this.epilepsia = epilepsia;
+		this.diabetes = diabetes;
+		this.problemaRenal = problemaRenal;
+		this.problemaOcular = problemaOcular;
+		this.problemaRespiratorio = problemaRespiratorio;
+		this.fumante = fumante;
+		this.medicamentosUsoContinuo = medicamentosUsoContinuo;
+		this.observasao = observasao;
+	}
+
+
 
 	public Long getMatricula() {
 		return matricula;

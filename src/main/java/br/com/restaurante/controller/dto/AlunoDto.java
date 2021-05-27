@@ -22,7 +22,7 @@ public class AlunoDto {
 
 	public AlunoDto(Aluno aluno) {
 		this.nome = aluno.getNome();
-		// TEM QUE IMPLEMENTAR
+		// fazer o mesmo para futuros atributos
 	}
 
 	public static List<AlunoDto> converter(List<Aluno> alunos) {

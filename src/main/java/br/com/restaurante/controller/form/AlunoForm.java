@@ -1,64 +1,68 @@
 package br.com.restaurante.controller.form;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javax.validation.constraints.NotNull;
 
-import br.com.restaurante.controller.dto.AlunoDto;
 import br.com.restaurante.model.Aluno;
 
 //classe apenas para representar o que recebemos do cliente por JSON
 public class AlunoForm {
 	
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 	@NotNull
 	private Long matricula;
 
 	private String nome;
-	
+
 	private String nomeSocial;
 
 	private Integer idade;
-	
+
 	private String estadoCivil;
 
 	private String dataNascimento;
-	
+
 	private String rg;
-	
+
 	private String cpf;
 
 	private String telefoneCelular;
-	
+
 	private String numeroWhatsapp;
-	
+
 	private String telefoneRecado;
-	
+
 	private String nomePessoaTelefoneRecado;
-	
+
 	private String endereco;
 
 	private String email;
-	
+
 	private String nomeResponsavel;
-	
+
 	private String escolaridade;
-	
+
 	private String escolaFundamental;
-	
+
 	private String escolaMedio;
-	
+
 	private String anoMedio;
-	
+
 	private String anoFormacaoMedio;
-	
+
 	private String camiseta;
 
 	private String sapato;
 
 	private String servicoAtendimento;
-	
+
 	private String unidade;
-	
+
 	private String tecnico;
-	
+
 	private String telefoneTecnico;
 
 	private Boolean alergia;
@@ -86,11 +90,11 @@ public class AlunoForm {
 	private Boolean problemaRespiratorio;
 
 	private Boolean fumante;
-	
+
 	private String medicamentosUsoContinuo;
 
 	private String observasao;
-	
+
 	public Long getMatricula() {
 		return matricula;
 	}
@@ -420,16 +424,12 @@ public class AlunoForm {
 	}
 
 	public Aluno converter() {
-		Aluno aluno = new Aluno();
-		aluno.setNome(nome);
-		
-		//fazer todos os outros atributos
-		
+		Aluno aluno = new Aluno(matricula, nome, nomeSocial, idade, estadoCivil, LocalDate.parse(dataNascimento, formatter), rg,
+				cpf, telefoneCelular, numeroWhatsapp, telefoneRecado, nomePessoaTelefoneRecado, endereco, email,
+				nomeResponsavel, escolaridade, escolaFundamental, escolaMedio, anoMedio, anoFormacaoMedio, camiseta,
+				sapato, servicoAtendimento, unidade, tecnico, telefoneTecnico, alergia, alergiaRemedio, alergiaAlimento,
+				alergiaOutros, especificacaoAlergia, hipertensao, hipotensao, epilepsia, diabetes, problemaRenal,
+				problemaOcular, problemaRespiratorio, fumante, medicamentosUsoContinuo, observasao);
 		return aluno;
-	}
-
-	public AlunoDto atualizar(Aluno aluno) {
-		//implementar
-		return null;
 	}
 }

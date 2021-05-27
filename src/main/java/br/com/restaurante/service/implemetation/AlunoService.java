@@ -1,5 +1,6 @@
 package br.com.restaurante.service.implemetation;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,38 +10,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.restaurante.model.Aluno;
+import br.com.restaurante.model.AlunoTurma;
 import br.com.restaurante.repository.AlunoRepository;
+import br.com.restaurante.repository.AlunoTurmaRepository;
 import br.com.restaurante.service.InterfaceService;
 
 @Service
 public class AlunoService implements InterfaceService<Aluno> {
 
 	@Autowired
-	public AlunoRepository repository;
+	public AlunoRepository alunoRepository;
+	
+	@Autowired
+	public AlunoTurmaRepository alunoTurmaRepository;
 
 	@Override
 	@Transactional
 	public Aluno create(Aluno aluno) {
-		repository.save(aluno);
+		alunoRepository.save(aluno);
 		return aluno;
 	}
 
 	@Override
 	public Aluno findById(Long matricula) {
-		Optional<Aluno> _aluno = repository.findById(matricula);
+		Optional<Aluno> _aluno = alunoRepository.findById(matricula);
 		return _aluno.orElse(null);
 	}
 
 	@Override
 	public List<Aluno> findAll() {
-		return repository.findAll();
+		return alunoRepository.findAll();
 	}
 
 	@Override
 	@Transactional
 	public boolean update(Aluno aluno) {
-		if (repository.existsById(aluno.getMatricula())) {
-			repository.save(aluno);
+		if (alunoRepository.existsById(aluno.getMatricula())) {
+			alunoRepository.save(aluno);
 			return true;
 		}
 		return false;
@@ -49,8 +55,8 @@ public class AlunoService implements InterfaceService<Aluno> {
 	@Override
 	@Transactional
 	public boolean delete(Long matricula) {
-		if (repository.existsById(matricula)) {
-			repository.deleteById(matricula);
+		if (alunoRepository.existsById(matricula)) {
+			alunoRepository.deleteById(matricula);
 			return true;
 		}
 		return false;
@@ -58,6 +64,19 @@ public class AlunoService implements InterfaceService<Aluno> {
 
 	public List<Aluno> findByTurma(String codigoTurma) {
 		// TEM QUE IMPLEMENTAR (talvez use o repositoy do AlunoTurma)
-		return null;
+		
+		//MELHORAR IMPLEMENTACAO
+		
+		List<AlunoTurma> list = alunoTurmaRepository.findByTurma_Numero(codigoTurma);
+		
+		if(list.isEmpty()) {
+			return null;
+		}
+		
+		List<Aluno> alunos = new ArrayList<Aluno>();
+		for (AlunoTurma alunoTurma : list) {
+			alunos.add(alunoTurma.getAluno());
+		}
+		return alunos;
 	}
 }
