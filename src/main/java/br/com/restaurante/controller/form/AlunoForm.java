@@ -1,6 +1,6 @@
 package br.com.restaurante.controller.form;
 
-import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
 
 import br.com.restaurante.controller.dto.AlunoDto;
 import br.com.restaurante.model.Aluno;
@@ -8,6 +8,7 @@ import br.com.restaurante.model.Aluno;
 //classe apenas para representar o que recebemos do cliente por JSON
 public class AlunoForm {
 	
+	@NotNull
 	private Long matricula;
 
 	private String nome;
@@ -18,7 +19,7 @@ public class AlunoForm {
 	
 	private String estadoCivil;
 
-	private LocalDate dataNascimento;
+	private String dataNascimento;
 	
 	private String rg;
 	
@@ -49,16 +50,6 @@ public class AlunoForm {
 	private String anoFormacaoMedio;
 	
 	private String camiseta;
-	
-	private String cidade;
-
-	private String bairro;
-
-	private String observacaoEndereco;
-
-	private String nomePai;
-
-	private String nomeMae;
 
 	private String sapato;
 
@@ -99,7 +90,7 @@ public class AlunoForm {
 	private String medicamentosUsoContinuo;
 
 	private String observasao;
-
+	
 	public Long getMatricula() {
 		return matricula;
 	}
@@ -140,11 +131,11 @@ public class AlunoForm {
 		this.estadoCivil = estadoCivil;
 	}
 
-	public LocalDate getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -266,46 +257,6 @@ public class AlunoForm {
 
 	public void setCamiseta(String camiseta) {
 		this.camiseta = camiseta;
-	}
-
-	public String getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-
-	public String getBairro() {
-		return bairro;
-	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
-	public String getObservacaoEndereco() {
-		return observacaoEndereco;
-	}
-
-	public void setObservacaoEndereco(String observacaoEndereco) {
-		this.observacaoEndereco = observacaoEndereco;
-	}
-
-	public String getNomePai() {
-		return nomePai;
-	}
-
-	public void setNomePai(String nomePai) {
-		this.nomePai = nomePai;
-	}
-
-	public String getNomeMae() {
-		return nomeMae;
-	}
-
-	public void setNomeMae(String nomeMae) {
-		this.nomeMae = nomeMae;
 	}
 
 	public String getSapato() {

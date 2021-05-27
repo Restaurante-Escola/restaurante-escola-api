@@ -3,6 +3,7 @@ package br.com.restaurante.controller;
 import java.util.List;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -49,7 +50,7 @@ public class AlunoController {
 	
 	@PostMapping
 	@Transactional 
-	public ResponseEntity<?> cadastrar(@RequestBody /*@Valid*/ AlunoForm form /*, UriComponentsBuilder uriBuilder*/) { //o @RequestBody indica ao Spring que os parâmetros enviados no corpo da requisição devem ser atribuídos ao parâmetro do método
+	public ResponseEntity<?> cadastrar(@RequestBody @Valid AlunoForm form) { //o @RequestBody indica ao Spring que os parâmetros enviados no corpo da requisição devem ser atribuídos ao parâmetro do método
 		Aluno aluno = form.converter();
 		service.create(aluno);
 		return ResponseEntity.ok().build();
@@ -68,12 +69,12 @@ public class AlunoController {
 	
 	@PutMapping("/{matricula}")
 	@Transactional //avisa pro spring que é pra commitar a transacao, Métodos anotados com @Transactional serão executados dentro de um contexto transacional, Ao finalizar o método, o Spring efetuará o commit automático da transação, caso nenhuma exception tenha sido lançada.
-	public ResponseEntity<?> atualizar(@PathVariable Long matricula, @RequestBody /*@Valid*/ AlunoForm form) { //preciso colocar no pom a dependencia de validacao
+	public ResponseEntity<?> atualizar(@PathVariable Long matricula, @RequestBody @Valid AlunoForm form) { //preciso colocar no pom a dependencia de validacao
 		Aluno aluno = service.findById(matricula);
 		if (aluno != null) {
 			Aluno alunoAtualizado = form.converter();
 			service.update(alunoAtualizado);
-			return ResponseEntity.ok().build(); //o ok retorna 200 com o dto no body da response
+			return ResponseEntity.ok().build();
 		}
 		return ResponseEntity.notFound().build();
 	}
