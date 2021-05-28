@@ -424,12 +424,11 @@ public class AlunoForm {
 	}
 
 	public Aluno converter() {
-		Aluno aluno = new Aluno(matricula, nome, nomeSocial, idade, estadoCivil, LocalDate.parse(dataNascimento, formatter), rg,
+		return new Aluno(matricula, nome, nomeSocial, idade, estadoCivil, LocalDate.parse(dataNascimento, formatter), rg,
 				cpf, telefoneCelular, numeroWhatsapp, telefoneRecado, nomePessoaTelefoneRecado, endereco, email,
 				nomeResponsavel, escolaridade, escolaFundamental, escolaMedio, anoMedio, anoFormacaoMedio, camiseta,
 				sapato, servicoAtendimento, unidade, tecnico, telefoneTecnico, alergia, alergiaRemedio, alergiaAlimento,
 				alergiaOutros, especificacaoAlergia, hipertensao, hipotensao, epilepsia, diabetes, problemaRenal,
 				problemaOcular, problemaRespiratorio, fumante, medicamentosUsoContinuo, observasao);
-		return aluno;
 	}
 }

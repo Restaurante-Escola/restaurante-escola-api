@@ -30,6 +30,10 @@ public class Feriado {
 	
 	public Feriado() {}
 
+	public Feriado(LocalDate data) {
+		this.data = data;
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -86,7 +90,4 @@ public class Feriado {
 			return false;
 		return true;
 	}
-	
-
-
 }

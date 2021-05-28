@@ -67,7 +67,7 @@ public class AlunoService implements InterfaceService<Aluno> {
 		
 		//MELHORAR IMPLEMENTACAO
 		
-		List<AlunoTurma> list = alunoTurmaRepository.findByTurma_Numero(codigoTurma);
+		List<AlunoTurma> list = alunoTurmaRepository.findByTurma_Numero(Integer.valueOf(codigoTurma));
 		
 		if(list.isEmpty()) {
 			return null;

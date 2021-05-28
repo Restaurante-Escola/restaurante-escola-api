@@ -1,3 +1,4 @@
+ALUNO:
 {
     "matricula":"1010",
     "nome":"joao",
@@ -41,3 +42,9 @@
     "medicamentosUsoContinuo":"dipirona",
     "observasao":"menino bom"
 }
+
+FERIADO:
+{
+   data:"15/09/2000"
+}
+
