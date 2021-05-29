@@ -10,6 +10,8 @@ public class AlunoDto {
 	
 	//colocar atributos que devolvemos pro cliente
 	
+	//tem que botar a matricula
+	
 	private String nome;
 	
 	public String getNome() {

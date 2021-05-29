@@ -161,6 +161,7 @@ public class Aluno {
 	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
 	private List<AlunoTurma> turma;
 	
+	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public Aluno() {}
 	
 	public Aluno(Long matricula, String nome, String nomeSocial, Integer idade, String estadoCivil,

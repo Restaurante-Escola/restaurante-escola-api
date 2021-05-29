@@ -37,6 +37,7 @@ public class Disciplina {
 	@OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL)
 	private List<Boletim> boletins;
 
+	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public Disciplina() {}
 
 	public Long getCodigo() {

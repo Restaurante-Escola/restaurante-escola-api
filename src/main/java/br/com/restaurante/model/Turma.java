@@ -36,10 +36,6 @@ public class Turma {
 	
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
-
-//	@OneToMany
-//	@JoinColumn(name = "turmas") // para nao criar outra tabela intermediaria, dessa vez chamadaturma_disciplinas
-//	private List<Disciplina> disciplinas;
 	
 	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
 	private List<AlunoTurma> turma;
@@ -50,6 +46,7 @@ public class Turma {
 	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
 	private List<Frequencia> frequencias;
 
+	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public Turma() {}
 	
 	public Long getCodigo() {

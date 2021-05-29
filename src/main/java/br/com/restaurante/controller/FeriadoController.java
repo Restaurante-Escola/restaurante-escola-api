@@ -73,4 +73,5 @@ public class FeriadoController {
 		}
 		return ResponseEntity.notFound().build();
 	}
+	
 }

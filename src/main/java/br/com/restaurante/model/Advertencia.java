@@ -35,6 +35,7 @@ public class Advertencia {
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 
+	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public Advertencia() {}
 
 	public Long getCodigo() {

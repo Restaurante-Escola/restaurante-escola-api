@@ -28,6 +28,7 @@ public class Feriado {
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 	
+	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public Feriado() {}
 
 	public Feriado(LocalDate data) {

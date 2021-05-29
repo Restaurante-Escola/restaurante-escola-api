@@ -1,5 +1,6 @@
 package br.com.restaurante.service.implemetation;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -46,6 +47,7 @@ public class AlunoService implements InterfaceService<Aluno> {
 	@Transactional
 	public boolean update(Aluno aluno) {
 		if (alunoRepository.existsById(aluno.getMatricula())) {
+			aluno.setAtualizadoEm(LocalDate.now());
 			alunoRepository.save(aluno);
 			return true;
 		}
@@ -67,6 +69,7 @@ public class AlunoService implements InterfaceService<Aluno> {
 		
 		//MELHORAR IMPLEMENTACAO
 		
+		//se der problema no parse, mudar o json para receber um integer
 		List<AlunoTurma> list = alunoTurmaRepository.findByTurma_Numero(Integer.valueOf(codigoTurma));
 		
 		if(list.isEmpty()) {

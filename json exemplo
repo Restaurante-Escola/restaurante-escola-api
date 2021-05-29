@@ -45,6 +45,14 @@ ALUNO:
 
 FERIADO:
 {
-   data:"15/09/2000"
+   "data":"15/09/2000"
+}
+
+
+OCORRENCIA DIARIO:
+{
+   "matricula":"1010",
+   "ocorrencia":"quebrou o pescoço ao bater a cabeça no vaso",
+   "dataOcorrencia":"24/01/2010"
 }
 

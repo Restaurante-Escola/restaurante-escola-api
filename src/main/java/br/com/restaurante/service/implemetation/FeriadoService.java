@@ -1,5 +1,6 @@
 package br.com.restaurante.service.implemetation;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,7 @@ public class FeriadoService implements InterfaceService<Feriado>{
 	@Transactional
 	public boolean update(Feriado feriado) {
 		if (repository.existsById(feriado.getCodigo())) {
+			feriado.setAtualizadoEm(LocalDate.now());
 			repository.save(feriado);
 			return true;
 		}

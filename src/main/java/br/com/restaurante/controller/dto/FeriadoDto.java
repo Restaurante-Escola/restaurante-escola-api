@@ -8,6 +8,8 @@ import br.com.restaurante.model.Feriado;
 
 public class FeriadoDto {
 	
+	//botar o codigo do feriado no dto
+	
 	private LocalDate data;
 
 	public LocalDate getData() {

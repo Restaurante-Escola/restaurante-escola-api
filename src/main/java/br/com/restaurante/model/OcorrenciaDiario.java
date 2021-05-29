@@ -40,7 +40,22 @@ public class OcorrenciaDiario {
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 
+	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public OcorrenciaDiario() {}
+
+	public OcorrenciaDiario(Long codigo, Aluno aluno, String ocorrencia,
+			LocalDate dataOcorrencia) {
+		this.codigo = codigo;
+		this.aluno = aluno;
+		this.ocorrencia = ocorrencia;
+		this.dataOcorrencia = dataOcorrencia;
+	}
+
+	public OcorrenciaDiario(Aluno aluno, String ocorrencia, LocalDate dataOcorrencia) {
+		this.aluno = aluno;
+		this.ocorrencia = ocorrencia;
+		this.dataOcorrencia = dataOcorrencia;
+	}
 
 	public Long getCodigo() {
 		return codigo;
@@ -114,5 +129,4 @@ public class OcorrenciaDiario {
 			return false;
 		return true;
 	}
-
 }

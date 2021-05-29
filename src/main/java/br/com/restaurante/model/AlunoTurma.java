@@ -33,7 +33,7 @@ public class AlunoTurma {
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm;
 	
-	@Deprecated
+	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public AlunoTurma() {}
 
 	public Long getCodigo() {
