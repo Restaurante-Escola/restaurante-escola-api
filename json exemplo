@@ -68,3 +68,10 @@ CADASTRAR ALUNO NA TURMA:
 	"numeroTurma":"1892",
 	"matricula":"1010"
 }
+
+ADVERTENCIA:
+{
+	"matricula":"",
+	"descricao":"",
+	"dataDescricao":""
+}

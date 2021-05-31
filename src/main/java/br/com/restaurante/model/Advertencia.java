@@ -24,7 +24,7 @@ public class Advertencia {
 	private Aluno aluno;
 
 	@Column(name = "dt_advertencia")
-	private String dataDescricao;
+	private LocalDate dataDescricao;
 
 	@Column(name = "ds_advertencia")
 	private String descricao;
@@ -37,6 +37,19 @@ public class Advertencia {
 
 	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public Advertencia() {}
+
+	public Advertencia(Aluno aluno, String descricao, LocalDate dataDescricao) {
+		this.aluno = aluno;
+		this.descricao = descricao;
+		this.dataDescricao = dataDescricao;
+	}
+
+	public Advertencia(Long codigo, Aluno aluno, String descricao, LocalDate dataDescricao) {
+		this.codigo = codigo;
+		this.aluno = aluno;
+		this.descricao = descricao;
+		this.dataDescricao = dataDescricao;
+	}
 
 	public Long getCodigo() {
 		return codigo;
@@ -78,11 +91,11 @@ public class Advertencia {
 		this.criadoEm = criadoEm;
 	}
 
-	public String getDataDescricao() {
+	public LocalDate getDataDescricao() {
 		return dataDescricao;
 	}
 
-	public void setDataDescricao(String dataDescricao) {
+	public void setDataDescricao(LocalDate dataDescricao) {
 		this.dataDescricao = dataDescricao;
 	}
 
