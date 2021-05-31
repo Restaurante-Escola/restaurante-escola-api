@@ -11,4 +11,5 @@ import br.com.restaurante.model.AlunoTurma;
 public interface AlunoTurmaRepository extends JpaRepository<AlunoTurma, Long> {
   
 	List<AlunoTurma> findByTurma_Numero(Integer i);
+
 }

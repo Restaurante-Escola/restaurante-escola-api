@@ -49,6 +49,17 @@ public class Turma {
 	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public Turma() {}
 	
+	public Turma(Long codigo, Integer numero, LocalDate inicioTurma) {
+		this.codigo = codigo;
+		this.numero = numero;
+		this.inicioTurma = inicioTurma;
+	}
+
+	public Turma(Integer numero, LocalDate inicioTurma) {
+		this.numero = numero;
+		this.inicioTurma = inicioTurma;
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}

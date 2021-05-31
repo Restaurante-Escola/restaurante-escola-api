@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 
 import br.com.restaurante.model.Aluno;
 import br.com.restaurante.model.OcorrenciaDiario;
-import br.com.restaurante.service.implemetation.AlunoService;
 
 public class OcorrenciaDiarioForm {
 	

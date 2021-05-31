@@ -36,6 +36,11 @@ public class AlunoTurma {
 	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public AlunoTurma() {}
 
+	public AlunoTurma(Aluno aluno, Turma turma) {
+		this.aluno = aluno;
+		this.turma = turma;
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}
