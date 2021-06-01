@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.persistence.Column;
-
 import br.com.restaurante.model.Aluno;
 
 //classe apenas para representar o que devolvemos pro cliente por JSON

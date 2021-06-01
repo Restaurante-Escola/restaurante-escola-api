@@ -50,6 +50,21 @@ public class Frequencia {
 	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public Frequencia() {}
 
+	public Frequencia(Aluno aluno, Turma turma, StatusPresenca status, LocalDate dataAula) {
+		this.aluno = aluno;
+		this.turma = turma;
+		this.status = status;
+		this.dataAula = dataAula;
+	}
+
+	public Frequencia(Long codigoFrequencia, Aluno aluno, Turma turma, StatusPresenca status, LocalDate dataAula) {
+		this.aluno = aluno;
+		this.turma = turma;
+		this.status = status;
+		this.dataAula = dataAula;
+		this.codigo = codigoFrequencia;
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -96,6 +111,14 @@ public class Frequencia {
 
 	public void setCriadoEm(LocalDate criadoEm) {
 		this.criadoEm = criadoEm;
+	}
+	
+	public StatusPresenca getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusPresenca status) {
+		this.status = status;
 	}
 
 	@Override

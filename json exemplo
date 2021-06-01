@@ -75,3 +75,11 @@ ADVERTENCIA:
 	"descricao":"",
 	"dataDescricao":""
 }
+
+FREQUENCIA:
+{
+	"status":"INTEGRAL",
+	"numeroTurma":"1892",
+	"matricula":"1010",
+	"dataAula":"10/10/2020"
+}

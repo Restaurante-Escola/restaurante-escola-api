@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.restaurante.model.Advertencia;
 import br.com.restaurante.model.Aluno;
-import br.com.restaurante.model.Advertencia;
 import br.com.restaurante.repository.AdvertenciaRepository;
 import br.com.restaurante.service.InterfaceService;
 
