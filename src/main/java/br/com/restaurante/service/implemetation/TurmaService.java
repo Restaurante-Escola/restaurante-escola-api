@@ -48,10 +48,10 @@ public class TurmaService implements InterfaceService<Turma> {
 		return _Turma.orElse(null);
 	}
 	
-//	public Turma findByAluno(Aluno aluno) {
-//		Optional<Turma> _Turma = turmaRepository.findByAluno(aluno);
-//		return _Turma.orElse(null);
-//	}
+	public Turma findByAluno(Aluno aluno) {
+		Optional<Turma> _Turma = turmaRepository.findByTurma_Aluno(aluno);
+		return _Turma.orElse(null);
+	}
 	
 //	public List<Turma> findListByAluno(Aluno aluno) {
 //		Optional<List<OcorrenciaDiario>> _OcorrenciaDiario = turmaRepository.findListByAluno(aluno);

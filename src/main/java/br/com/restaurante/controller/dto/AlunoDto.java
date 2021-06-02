@@ -106,6 +106,8 @@ public class AlunoDto {
 	private List<Frequencia> frequencias = new ArrayList<Frequencia>();
 	
 	private List<OcorrenciaDiario> ocorrenciaDiario = new ArrayList<OcorrenciaDiario>();
+	
+	private Integer numeroTurma;
 
 	public Long getMatricula() {
 		return matricula;
@@ -475,6 +477,14 @@ public class AlunoDto {
 		this.ocorrenciaDiario = ocorrenciaDiario;
 	}
 
+	public Integer getNumeroTurma() {
+		return numeroTurma;
+	}
+
+	public void setNumeroTurma(Integer numeroTurma) {
+		this.numeroTurma = numeroTurma;
+	}
+
 	public AlunoDto(Aluno aluno) {
 		this.matricula = aluno.getMatricula();
 		this.nome = aluno.getNome();
@@ -522,6 +532,7 @@ public class AlunoDto {
 		this.advertencias = aluno.getAdvertencias();
 		this.frequencias = aluno.getFrequencias();
 		this.ocorrenciaDiario = aluno.getOcorrenciaDiario();
+		this.numeroTurma = aluno.getTurma().get(aluno.getTurma().size() - 1).getTurma().getNumero();
 	}
 
 	public static List<AlunoDto> converter(List<Aluno> alunos) {
