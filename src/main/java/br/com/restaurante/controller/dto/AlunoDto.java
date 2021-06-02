@@ -1,10 +1,14 @@
 package br.com.restaurante.controller.dto;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import br.com.restaurante.model.Advertencia;
 import br.com.restaurante.model.Aluno;
+import br.com.restaurante.model.Frequencia;
+import br.com.restaurante.model.OcorrenciaDiario;
 
 //classe apenas para representar o que devolvemos pro cliente por JSON
 public class AlunoDto {
@@ -96,6 +100,12 @@ public class AlunoDto {
 	private LocalDate criadoEm;
 
 	private LocalDate atualizadoEm;
+	
+	private List<Advertencia> advertencias = new ArrayList<Advertencia>();
+	
+	private List<Frequencia> frequencias = new ArrayList<Frequencia>();
+	
+	private List<OcorrenciaDiario> ocorrenciaDiario = new ArrayList<OcorrenciaDiario>();
 
 	public Long getMatricula() {
 		return matricula;
@@ -441,6 +451,30 @@ public class AlunoDto {
 		this.atualizadoEm = atualizadoEm;
 	}
 	
+	public List<Advertencia> getAdvertencias() {
+		return advertencias;
+	}
+
+	public void setAdvertencias(List<Advertencia> advertencias) {
+		this.advertencias = advertencias;
+	}
+
+	public List<Frequencia> getFrequencias() {
+		return frequencias;
+	}
+
+	public void setFrequencias(List<Frequencia> frequencias) {
+		this.frequencias = frequencias;
+	}
+
+	public List<OcorrenciaDiario> getOcorrenciaDiario() {
+		return ocorrenciaDiario;
+	}
+
+	public void setOcorrenciaDiario(List<OcorrenciaDiario> ocorrenciaDiario) {
+		this.ocorrenciaDiario = ocorrenciaDiario;
+	}
+
 	public AlunoDto(Aluno aluno) {
 		this.matricula = aluno.getMatricula();
 		this.nome = aluno.getNome();
@@ -485,10 +519,12 @@ public class AlunoDto {
 		this.observasao = aluno.getObservasao();
 		this.criadoEm = aluno.getCriadoEm();
 		this.atualizadoEm = aluno.getAtualizadoEm();
+		this.advertencias = aluno.getAdvertencias();
+		this.frequencias = aluno.getFrequencias();
+		this.ocorrenciaDiario = aluno.getOcorrenciaDiario();
 	}
 
 	public static List<AlunoDto> converter(List<Aluno> alunos) {
-		// TEM QUE IMPLEMENTAR
 		return alunos.stream().map(AlunoDto::new).collect(Collectors.toList());
 	}
 

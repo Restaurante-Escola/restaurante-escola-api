@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -32,10 +33,12 @@ public class Frequencia {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_turma")
+	@JsonIgnore
 	private Turma turma;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_matricula_aluno")
+	@JsonIgnore
 	private Aluno aluno;
 	
 	@Column(name = "dt_aula")
