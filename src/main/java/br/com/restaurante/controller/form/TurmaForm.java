@@ -15,6 +15,8 @@ public class TurmaForm {
 	private Integer numero;
 	
 	private String inicioTurma;
+
+	private String fimTurma;
 	
 	public Integer getNumero() {
 		return numero;
@@ -31,12 +33,29 @@ public class TurmaForm {
 	public void setInicioTurma(String inicioTurma) {
 		this.inicioTurma = inicioTurma;
 	}
+
+	public String getFimTurma() {
+		return fimTurma;
+	}
+
+	public void setFimTurma(String fimTurma) {
+		this.fimTurma = fimTurma;
+	}
 	
 	public Turma converterAtualizar(Turma turma) {
-		return new Turma(turma.getCodigo(), numero, LocalDate.parse(inicioTurma, formatter));
+		return new Turma(
+			turma.getCodigo(), 
+			numero, 
+			LocalDate.parse(inicioTurma, formatter),
+			LocalDate.parse(fimTurma, formatter)
+		);
 	}
 	
 	public Turma converterParaCriar() {
-		return new Turma(numero, LocalDate.parse(inicioTurma, formatter));
+		return new Turma(
+			numero,
+			LocalDate.parse(inicioTurma, formatter),
+			LocalDate.parse(fimTurma, formatter)
+		);
 	}
 }

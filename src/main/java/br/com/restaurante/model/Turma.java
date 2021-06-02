@@ -49,15 +49,17 @@ public class Turma {
 	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public Turma() {}
 	
-	public Turma(Long codigo, Integer numero, LocalDate inicioTurma) {
+	public Turma(Long codigo, Integer numero, LocalDate inicioTurma, LocalDate fimTurma) {
 		this.codigo = codigo;
 		this.numero = numero;
 		this.inicioTurma = inicioTurma;
+		this.fimTurma = fimTurma;
 	}
 
-	public Turma(Integer numero, LocalDate inicioTurma) {
+	public Turma(Integer numero, LocalDate inicioTurma, LocalDate fimTurma) {
 		this.numero = numero;
 		this.inicioTurma = inicioTurma;
+		this.fimTurma = fimTurma;
 	}
 
 	public Long getCodigo() {
