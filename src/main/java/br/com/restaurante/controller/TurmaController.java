@@ -74,15 +74,21 @@ public class TurmaController {
 	@PostMapping
 	@Transactional
 	public ResponseEntity<?> cadastrarTurma(@RequestBody @Valid TurmaForm form) {
-		Turma turma = form.converterParaCriar();
-		turmaService.create(turma);
-		return ResponseEntity.ok().build();
+		if(!existeTurma(form)) {
+			Turma turma = form.converterParaCriar();
+			turmaService.create(turma);
+			return ResponseEntity.ok().build();
+		}
+		return ResponseEntity.badRequest().build();
+	}
+
+	private boolean existeTurma(TurmaForm form) {
+		return turmaService.findByCodigoTurma(form.getNumero()).getNumero().equals(form.getNumero());
 	}
 	
 	@PostMapping("/cadastrar-alunos")
 	@Transactional
 	public ResponseEntity<?> atualizarTurmas(@RequestBody @Valid AlunoTurmaForm form) {
-		System.out.println("entrou");
 		Aluno aluno = alunoService.findById(form.getMatricula());
 		Turma turma = turmaService.findByCodigoTurma(form.getNumeroTurma());
 		if (turma != null && aluno != null) {

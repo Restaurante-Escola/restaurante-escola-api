@@ -26,7 +26,7 @@ public class Turma {
 	private Integer numero;
 	
 	@Column(name = "dt_inicio_turma")
-	private LocalDate inicioTurma;
+	private LocalDate inicioTurma; 
 	
 	@Column(name = "dt_fim_turma")
 	private LocalDate fimTurma;
