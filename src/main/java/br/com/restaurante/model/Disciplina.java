@@ -29,7 +29,7 @@ public class Disciplina {
 	private LocalDate criadoEm = LocalDate.now();
 	
 	@Column(name = "dt_atualizado_em")
-	private LocalDate atualizadoEm;
+	private LocalDate atualizadoEm = LocalDate.now();
 
 	@OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL)
 	private List<DisciplinaTurma> disciplinaTurma;

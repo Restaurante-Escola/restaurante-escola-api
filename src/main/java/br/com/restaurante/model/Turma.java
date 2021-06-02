@@ -35,7 +35,7 @@ public class Turma {
 	private LocalDate criadoEm = LocalDate.now();
 	
 	@Column(name = "dt_atualizado_em")
-	private LocalDate atualizadoEm;
+	private LocalDate atualizadoEm = LocalDate.now();
 	
 	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
 	private List<AlunoTurma> turma;

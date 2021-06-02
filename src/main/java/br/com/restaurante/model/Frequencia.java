@@ -45,7 +45,7 @@ public class Frequencia {
 	private LocalDate criadoEm = LocalDate.now();
 
 	@Column(name = "dt_atualizado_em")
-	private LocalDate atualizadoEm;
+	private LocalDate atualizadoEm = LocalDate.now();
 	
 	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public Frequencia() {}
