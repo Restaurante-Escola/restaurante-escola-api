@@ -74,7 +74,7 @@ public class FrequenciaController {
 		if(aluno != null) {
 			List<Frequencia> frequencias = aluno.getFrequencias();
 			if (frequenciaService.findById(frequencias.get(0).getCodigo()) != null) {
-				List<Frequencia> faltas = frequencias.stream().filter(f -> f.getStatus().equals(StatusPresenca.FALTA)).collect(Collectors.toList());
+				List<Frequencia> faltas = frequencias.stream().filter(f -> f.getStatus().equals(StatusPresenca.FALTA) || f.getStatus().equals(StatusPresenca.MEIA)).collect(Collectors.toList());
 				return ResponseEntity.ok(FaltasDto.converter(faltas.size(), FrequenciaDto.converter(faltas)));
 			}
 		}
