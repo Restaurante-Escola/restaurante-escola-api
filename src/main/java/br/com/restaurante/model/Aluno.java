@@ -144,7 +144,7 @@ public class Aluno {
 	private LocalDate criadoEm  = LocalDate.now();
 
 	@Column(name = "dt_atualizado_em")
-	private LocalDate atualizadoEm;
+	private LocalDate atualizadoEm = LocalDate.now();
 
 	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
 	private List<Advertencia> advertencias;
