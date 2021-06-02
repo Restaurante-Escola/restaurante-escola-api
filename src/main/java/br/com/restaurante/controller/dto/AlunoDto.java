@@ -11,7 +11,7 @@ public class AlunoDto {
 	
 	//colocar atributos que devolvemos pro cliente
 	
-	//tem que botar a matricula
+	private Long matricula;
 	
 	private String nome;
 	
@@ -92,6 +92,18 @@ public class AlunoDto {
 	private String medicamentosUsoContinuo;
 
 	private String observasao;
+
+	private LocalDate criadoEm;
+
+	private LocalDate atualizadoEm;
+
+	public Long getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Long matricula) {
+		this.matricula = matricula;
+	}
 	
 	public String getNome() {
 		return nome;
@@ -412,8 +424,25 @@ public class AlunoDto {
 	public void setObservasao(String observasao) {
 		this.observasao = observasao;
 	}
+
+	public LocalDate getCriadoEm() {
+		return criadoEm;
+	}
+
+	public void setCriadoEm(LocalDate criadoEm) {
+		this.criadoEm = criadoEm;
+	}
+
+	public LocalDate getAtualizadoEm() {
+		return atualizadoEm;
+	}
+
+	public void setAtualizadoEm(LocalDate atualizadoEm) {
+		this.atualizadoEm = atualizadoEm;
+	}
 	
 	public AlunoDto(Aluno aluno) {
+		this.matricula = aluno.getMatricula();
 		this.nome = aluno.getNome();
 		this.nomeSocial = aluno.getNomeSocial();
 		this.idade = aluno.getIdade();
@@ -454,6 +483,8 @@ public class AlunoDto {
 		this.fumante = aluno.getFumante();
 		this.medicamentosUsoContinuo = aluno.getMedicamentosUsoContinuo();
 		this.observasao = aluno.getObservasao();
+		this.criadoEm = aluno.getCriadoEm();
+		this.atualizadoEm = aluno.getAtualizadoEm();
 	}
 
 	public static List<AlunoDto> converter(List<Aluno> alunos) {
