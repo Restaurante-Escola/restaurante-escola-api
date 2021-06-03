@@ -47,9 +47,9 @@ public class AlunoDto {
 	
 	private String escolaridade;
 	
-	private String escolaFundamental;
+	private String escolaridadeGrau;
 	
-	private String escolaMedio;
+	private String escola;
 	
 	private String anoMedio;
 	
@@ -95,7 +95,7 @@ public class AlunoDto {
 	
 	private String medicamentosUsoContinuo;
 
-	private String observasao;
+	private String observacao;
 
 	private LocalDate criadoEm;
 
@@ -237,20 +237,12 @@ public class AlunoDto {
 		this.escolaridade = escolaridade;
 	}
 
-	public String getEscolaFundamental() {
-		return escolaFundamental;
+	public String getEscola() {
+		return escola;
 	}
 
-	public void setEscolaFundamental(String escolaFundamental) {
-		this.escolaFundamental = escolaFundamental;
-	}
-
-	public String getEscolaMedio() {
-		return escolaMedio;
-	}
-
-	public void setEscolaMedio(String escolaMedio) {
-		this.escolaMedio = escolaMedio;
+	public void setEscola(String escola) {
+		this.escola = escola;
 	}
 
 	public String getAnoMedio() {
@@ -429,12 +421,12 @@ public class AlunoDto {
 		this.medicamentosUsoContinuo = medicamentosUsoContinuo;
 	}
 
-	public String getObservasao() {
-		return observasao;
+	public String getObservacao() {
+		return observacao;
 	}
 
-	public void setObservasao(String observasao) {
-		this.observasao = observasao;
+	public void setObservasao(String observacao) {
+		this.observacao = observacao;
 	}
 
 	public LocalDate getCriadoEm() {
@@ -484,6 +476,18 @@ public class AlunoDto {
 	public void setNumeroTurma(Integer numeroTurma) {
 		this.numeroTurma = numeroTurma;
 	}
+	
+	public String getEscolaridadeGrau() {
+		return escolaridadeGrau;
+	}
+
+	public void setEscolaridadeGrau(String escolaridadeGrau) {
+		this.escolaridadeGrau = escolaridadeGrau;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
 
 	public AlunoDto(Aluno aluno) {
 		this.matricula = aluno.getMatricula();
@@ -502,8 +506,7 @@ public class AlunoDto {
 		this.email = aluno.getEmail();
 		this.nomeResponsavel = aluno.getNomeResponsavel();
 		this.escolaridade = aluno.getEscolaridade();
-		this.escolaFundamental = aluno.getEscolaFundamental();
-		this.escolaMedio = aluno.getEscolaMedio();
+		this.escola = aluno.getEscola();
 		this.anoMedio = aluno.getAnoMedio();
 		this.anoFormacaoMedio = aluno.getAnoFormacaoMedio();
 		this.camiseta = aluno.getCamiseta();
@@ -526,7 +529,7 @@ public class AlunoDto {
 		this.problemaRespiratorio = aluno.getProblemaRespiratorio();
 		this.fumante = aluno.getFumante();
 		this.medicamentosUsoContinuo = aluno.getMedicamentosUsoContinuo();
-		this.observasao = aluno.getObservasao();
+		this.observacao = aluno.getObservacao();
 		this.criadoEm = aluno.getCriadoEm();
 		this.atualizadoEm = aluno.getAtualizadoEm();
 		this.advertencias = aluno.getAdvertencias();
