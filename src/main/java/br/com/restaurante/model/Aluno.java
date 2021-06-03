@@ -65,11 +65,11 @@ public class Aluno {
 	@Column(name = "nm_escolaridade_aluno")
 	private String escolaridade;
 	
-	@Column(name = "nm_escola_fundamental_aluno")
-	private String escolaFundamental;
+	@Column(name = "nm_escolaridade_grau_aluno")
+	private String escolaridadeGrau;
 	
-	@Column(name = "nm_escola_medio_aluno")
-	private String escolaMedio;
+	@Column(name = "nm_escola")
+	private String escola;
 	
 	@Column(name = "cd_ano_medio_escolaridade_aluno")
 	private String anoMedio;
@@ -138,7 +138,7 @@ public class Aluno {
 	private String medicamentosUsoContinuo;
 
 	@Column(name = "ds_obs_aluno")
-	private String observasao;
+	private String observacao;
 
 	@Column(name = "dt_criado_em")
 	private LocalDate criadoEm  = LocalDate.now();
@@ -167,12 +167,12 @@ public class Aluno {
 	public Aluno(Long matricula, String nome, String nomeSocial, Integer idade, String estadoCivil,
 			LocalDate dataNascimento, String rg, String cpf, String telefoneCelular, String numeroWhatsapp,
 			String telefoneRecado, String nomePessoaTelefoneRecado, String endereco, String email,
-			String nomeResponsavel, String escolaridade, String escolaFundamental, String escolaMedio, String anoMedio,
+			String nomeResponsavel, String escolaridade, String escolaridadeGrau, String escola, String anoMedio,
 			String anoFormacaoMedio, String camiseta, String sapato, String servicoAtendimento, String unidade,
 			String tecnico, String telefoneTecnico, Boolean alergia, Boolean alergiaRemedio, Boolean alergiaAlimento,
 			Boolean alergiaOutros, String especificacaoAlergia, Boolean hipertensao, Boolean hipotensao,
 			Boolean epilepsia, Boolean diabetes, Boolean problemaRenal, Boolean problemaOcular,
-			Boolean problemaRespiratorio, Boolean fumante, String medicamentosUsoContinuo, String observasao) {
+			Boolean problemaRespiratorio, Boolean fumante, String medicamentosUsoContinuo, String observacao) {
 		super();
 		this.matricula = matricula;
 		this.nome = nome;
@@ -190,8 +190,7 @@ public class Aluno {
 		this.email = email;
 		this.nomeResponsavel = nomeResponsavel;
 		this.escolaridade = escolaridade;
-		this.escolaFundamental = escolaFundamental;
-		this.escolaMedio = escolaMedio;
+		this.escola = escola;
 		this.anoMedio = anoMedio;
 		this.anoFormacaoMedio = anoFormacaoMedio;
 		this.camiseta = camiseta;
@@ -214,10 +213,9 @@ public class Aluno {
 		this.problemaRespiratorio = problemaRespiratorio;
 		this.fumante = fumante;
 		this.medicamentosUsoContinuo = medicamentosUsoContinuo;
-		this.observasao = observasao;
+		this.observacao = observacao;
+		this.escolaridadeGrau = escolaridadeGrau;
 	}
-
-
 
 	public Long getMatricula() {
 		return matricula;
@@ -229,6 +227,10 @@ public class Aluno {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public String getObservacao() {
+		return observacao;
 	}
 
 	public void setNome(String nome) {
@@ -346,21 +348,13 @@ public class Aluno {
 	public void setEscolaridade(String escolaridade) {
 		this.escolaridade = escolaridade;
 	}
-
-	public String getEscolaFundamental() {
-		return escolaFundamental;
+	
+	public String getEscola() {
+		return escola;
 	}
 
-	public void setEscolaFundamental(String escolaFundamental) {
-		this.escolaFundamental = escolaFundamental;
-	}
-
-	public String getEscolaMedio() {
-		return escolaMedio;
-	}
-
-	public void setEscolaMedio(String escolaMedio) {
-		this.escolaMedio = escolaMedio;
+	public void setEscola(String escola) {
+		this.escola = escola;
 	}
 
 	public String getAnoMedio() {
@@ -490,6 +484,14 @@ public class Aluno {
 	public void setEpilepsia(Boolean epilepsia) {
 		this.epilepsia = epilepsia;
 	}
+	
+	public String getEscolaridadeGrau() {
+		return escolaridadeGrau;
+	}
+
+	public void setEscolaridadeGrau(String escolaridadeGrau) {
+		this.escolaridadeGrau = escolaridadeGrau;
+	}
 
 	public Boolean getDiabetes() {
 		return diabetes;
@@ -539,14 +541,6 @@ public class Aluno {
 		this.medicamentosUsoContinuo = medicamentosUsoContinuo;
 	}
 
-	public String getObservasao() {
-		return observasao;
-	}
-
-	public void setObservasao(String observasao) {
-		this.observasao = observasao;
-	}
-
 	public LocalDate getCriadoEm() {
 		return criadoEm;
 	}
@@ -585,6 +579,10 @@ public class Aluno {
 
 	public void setFrequencias(List<Frequencia> frequencias) {
 		this.frequencias = frequencias;
+	}
+	
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 
 	public List<OcorrenciaDiario> getOcorrenciaDiario() {
