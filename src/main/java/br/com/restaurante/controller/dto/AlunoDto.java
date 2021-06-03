@@ -532,7 +532,11 @@ public class AlunoDto {
 		this.advertencias = aluno.getAdvertencias();
 		this.frequencias = aluno.getFrequencias();
 		this.ocorrenciaDiario = aluno.getOcorrenciaDiario();
-		this.numeroTurma = aluno.getTurma().get(aluno.getTurma().size() - 1).getTurma().getNumero();
+		if (aluno.getTurma().size() == 0) {
+			this.numeroTurma = null;
+		} else {
+			this.numeroTurma = aluno.getTurma().get(aluno.getTurma().size() - 1).getTurma().getNumero();
+		}
 	}
 
 	public static List<AlunoDto> converter(List<Aluno> alunos) {
