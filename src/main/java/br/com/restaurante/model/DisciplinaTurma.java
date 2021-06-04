@@ -1,5 +1,6 @@
 package br.com.restaurante.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
@@ -12,8 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class DisciplinaTurma {
+public class DisciplinaTurma implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cd_disciplina_turma")
@@ -31,7 +34,7 @@ public class DisciplinaTurma {
 	private LocalDate criadoEm = LocalDate.now();
 
 	@Column(name = "dt_atualizado_em")
-	private LocalDate atualizadoEm;
+	private LocalDate atualizadoEm = LocalDate.now();
 
 	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public DisciplinaTurma() {}

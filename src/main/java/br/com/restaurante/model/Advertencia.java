@@ -1,5 +1,6 @@
 package br.com.restaurante.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
@@ -11,9 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class Advertencia {
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Entity
+public class Advertencia implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cd_advertencia")
@@ -21,10 +26,11 @@ public class Advertencia {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_matricula_aluno")
+	@JsonIgnore
 	private Aluno aluno;
 
 	@Column(name = "dt_advertencia")
-	private String dataDescricao;
+	private LocalDate dataDescricao;
 
 	@Column(name = "ds_advertencia")
 	private String descricao;
@@ -33,10 +39,23 @@ public class Advertencia {
 	private LocalDate criadoEm = LocalDate.now();
 
 	@Column(name = "dt_atualizado_em")
-	private LocalDate atualizadoEm;
+	private LocalDate atualizadoEm = LocalDate.now();
 
 	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public Advertencia() {}
+
+	public Advertencia(Aluno aluno, String descricao, LocalDate dataDescricao) {
+		this.aluno = aluno;
+		this.descricao = descricao;
+		this.dataDescricao = dataDescricao;
+	}
+
+	public Advertencia(Long codigo, Aluno aluno, String descricao, LocalDate dataDescricao) {
+		this.codigo = codigo;
+		this.aluno = aluno;
+		this.descricao = descricao;
+		this.dataDescricao = dataDescricao;
+	}
 
 	public Long getCodigo() {
 		return codigo;
@@ -78,11 +97,11 @@ public class Advertencia {
 		this.criadoEm = criadoEm;
 	}
 
-	public String getDataDescricao() {
+	public LocalDate getDataDescricao() {
 		return dataDescricao;
 	}
 
-	public void setDataDescricao(String dataDescricao) {
+	public void setDataDescricao(LocalDate dataDescricao) {
 		this.dataDescricao = dataDescricao;
 	}
 

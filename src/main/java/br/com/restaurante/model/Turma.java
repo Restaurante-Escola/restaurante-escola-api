@@ -1,5 +1,6 @@
 package br.com.restaurante.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,8 +15,10 @@ import javax.persistence.OneToMany;
 import com.sun.istack.NotNull;
 
 @Entity
-public class Turma {
-
+public class Turma implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cd_turma")
@@ -26,7 +29,7 @@ public class Turma {
 	private Integer numero;
 	
 	@Column(name = "dt_inicio_turma")
-	private LocalDate inicioTurma;
+	private LocalDate inicioTurma; 
 	
 	@Column(name = "dt_fim_turma")
 	private LocalDate fimTurma;
@@ -35,7 +38,7 @@ public class Turma {
 	private LocalDate criadoEm = LocalDate.now();
 	
 	@Column(name = "dt_atualizado_em")
-	private LocalDate atualizadoEm;
+	private LocalDate atualizadoEm = LocalDate.now();
 	
 	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
 	private List<AlunoTurma> turma;
@@ -49,6 +52,19 @@ public class Turma {
 	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public Turma() {}
 	
+	public Turma(Long codigo, Integer numero, LocalDate inicioTurma, LocalDate fimTurma) {
+		this.codigo = codigo;
+		this.numero = numero;
+		this.inicioTurma = inicioTurma;
+		this.fimTurma = fimTurma;
+	}
+
+	public Turma(Integer numero, LocalDate inicioTurma, LocalDate fimTurma) {
+		this.numero = numero;
+		this.inicioTurma = inicioTurma;
+		this.fimTurma = fimTurma;
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}

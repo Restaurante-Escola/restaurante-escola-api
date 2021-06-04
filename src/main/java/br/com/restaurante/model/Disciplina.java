@@ -1,5 +1,6 @@
 package br.com.restaurante.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,8 +15,10 @@ import javax.persistence.OneToMany;
 import com.sun.istack.NotNull;
 
 @Entity
-public class Disciplina {
+public class Disciplina implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cd_disciplina")
@@ -29,7 +32,7 @@ public class Disciplina {
 	private LocalDate criadoEm = LocalDate.now();
 	
 	@Column(name = "dt_atualizado_em")
-	private LocalDate atualizadoEm;
+	private LocalDate atualizadoEm = LocalDate.now();
 
 	@OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL)
 	private List<DisciplinaTurma> disciplinaTurma;

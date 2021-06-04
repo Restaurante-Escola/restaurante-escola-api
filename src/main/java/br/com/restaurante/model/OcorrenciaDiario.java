@@ -1,5 +1,6 @@
 package br.com.restaurante.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
@@ -12,11 +13,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "OCORRENCIA_DIARIO")
-public class OcorrenciaDiario {
+public class OcorrenciaDiario implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +30,7 @@ public class OcorrenciaDiario {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_matricula_aluno")
+	@JsonIgnore
 	private Aluno aluno;
 
 	@Column(name = "ds_ocorrencia")
@@ -38,7 +43,7 @@ public class OcorrenciaDiario {
 	private LocalDate criadoEm = LocalDate.now();
 
 	@Column(name = "dt_atualizado_em")
-	private LocalDate atualizadoEm;
+	private LocalDate atualizadoEm = LocalDate.now();
 
 	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public OcorrenciaDiario() {}

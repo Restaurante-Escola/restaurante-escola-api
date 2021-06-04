@@ -56,3 +56,30 @@ OCORRENCIA DIARIO:
    "dataOcorrencia":"24/01/2010"
 }
 
+TURMA:
+
+{
+	"numero":"1892",
+	"inicioTurma":"13/07/2024"
+}
+
+CADASTRAR ALUNO NA TURMA:
+{
+	"numeroTurma":"1892",
+	"matricula":"1010"
+}
+
+ADVERTENCIA:
+{
+	"matricula":"",
+	"descricao":"",
+	"dataDescricao":""
+}
+
+FREQUENCIA:
+{
+	"status":"INTEGRAL",
+	"numeroTurma":"1892",
+	"matricula":"1010",
+	"dataAula":"10/10/2020"
+}

@@ -1,5 +1,6 @@
 package br.com.restaurante.controller;
 
+import java.net.URI;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.restaurante.controller.dto.FeriadoDto;
 import br.com.restaurante.controller.form.FeriadoForm;
@@ -45,10 +47,12 @@ public class FeriadoController {
 	
 	@PostMapping
 	@Transactional 
-	public ResponseEntity<?> cadastrar(@RequestBody @Valid FeriadoForm form) { //o @RequestBody indica ao Spring que os parâmetros enviados no corpo da requisição devem ser atribuídos ao parâmetro do método
+	public ResponseEntity<?> cadastrar(@RequestBody @Valid FeriadoForm form, UriComponentsBuilder uriBuilder) { //o @RequestBody indica ao Spring que os parâmetros enviados no corpo da requisição devem ser atribuídos ao parâmetro do método
 		Feriado feriado = form.converter();
 		service.create(feriado);
-		return ResponseEntity.ok().build();
+		//jeito mais moderno, o proprio spring instancia o UriComponentsBuilder
+		URI uri = uriBuilder.path("/{codigo}").buildAndExpand(feriado.getCodigo()).toUri();
+		return ResponseEntity.created(uri).body(new FeriadoDto(feriado)); //devolve 201
 	}
 	
 	//Quando configurado o spring security, o spring verifica se a role do usuario é MODERADOR, se nao for, ele nem entra no remover
@@ -69,7 +73,8 @@ public class FeriadoController {
 		if (feriado != null) {
 			Feriado feriadoAtualizado = form.converter();
 			service.update(feriadoAtualizado);
-			return ResponseEntity.ok().build();
+			FeriadoDto feriadoDto = FeriadoDto.converter(feriadoAtualizado);
+			return ResponseEntity.ok(feriadoDto);
 		}
 		return ResponseEntity.notFound().build();
 	}

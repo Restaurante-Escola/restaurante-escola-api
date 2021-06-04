@@ -1,5 +1,6 @@
 package br.com.restaurante.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
@@ -14,11 +15,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "FREQUENCIA_ALUNO")
-public class Frequencia {
+public class Frequencia implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +36,12 @@ public class Frequencia {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_turma")
+	@JsonIgnore
 	private Turma turma;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_matricula_aluno")
+	@JsonIgnore
 	private Aluno aluno;
 	
 	@Column(name = "dt_aula")
@@ -45,10 +51,25 @@ public class Frequencia {
 	private LocalDate criadoEm = LocalDate.now();
 
 	@Column(name = "dt_atualizado_em")
-	private LocalDate atualizadoEm;
+	private LocalDate atualizadoEm = LocalDate.now();
 	
 	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO
 	public Frequencia() {}
+
+	public Frequencia(Aluno aluno, Turma turma, StatusPresenca status, LocalDate dataAula) {
+		this.aluno = aluno;
+		this.turma = turma;
+		this.status = status;
+		this.dataAula = dataAula;
+	}
+
+	public Frequencia(Long codigoFrequencia, Aluno aluno, Turma turma, StatusPresenca status, LocalDate dataAula) {
+		this.aluno = aluno;
+		this.turma = turma;
+		this.status = status;
+		this.dataAula = dataAula;
+		this.codigo = codigoFrequencia;
+	}
 
 	public Long getCodigo() {
 		return codigo;
@@ -96,6 +117,14 @@ public class Frequencia {
 
 	public void setCriadoEm(LocalDate criadoEm) {
 		this.criadoEm = criadoEm;
+	}
+	
+	public StatusPresenca getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusPresenca status) {
+		this.status = status;
 	}
 
 	@Override

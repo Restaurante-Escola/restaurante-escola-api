@@ -37,6 +37,12 @@ public class AlunoService implements InterfaceService<Aluno> {
 		Optional<Aluno> _aluno = alunoRepository.findById(matricula);
 		return _aluno.orElse(null);
 	}
+	
+	public List<Aluno> findByNome(String nome) {
+		Optional<List<Aluno>> _aluno = alunoRepository.findByNomeLike("%"+nome+"%");
+		return _aluno.orElse(null);
+	}
+
 
 	@Override
 	public List<Aluno> findAll() {

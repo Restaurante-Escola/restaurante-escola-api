@@ -9,7 +9,7 @@ import br.com.restaurante.model.Aluno;
 
 //classe apenas para representar o que recebemos do cliente por JSON
 public class AlunoForm {
-	
+
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	@NotNull
@@ -45,9 +45,9 @@ public class AlunoForm {
 
 	private String escolaridade;
 
-	private String escolaFundamental;
+	private String escolaridadeGrau;
 
-	private String escolaMedio;
+	private String escola;
 
 	private String anoMedio;
 
@@ -93,7 +93,7 @@ public class AlunoForm {
 
 	private String medicamentosUsoContinuo;
 
-	private String observasao;
+	private String observacao;
 
 	public Long getMatricula() {
 		return matricula;
@@ -179,6 +179,14 @@ public class AlunoForm {
 		return telefoneRecado;
 	}
 
+	public String getEscolaridadeGrau() {
+		return escolaridadeGrau;
+	}
+
+	public void setEscolaridadeGrau(String escolaridadeGrau) {
+		this.escolaridadeGrau = escolaridadeGrau;
+	}
+
 	public void setTelefoneRecado(String telefoneRecado) {
 		this.telefoneRecado = telefoneRecado;
 	}
@@ -223,20 +231,12 @@ public class AlunoForm {
 		this.escolaridade = escolaridade;
 	}
 
-	public String getEscolaFundamental() {
-		return escolaFundamental;
+	public String getEscola() {
+		return escola;
 	}
 
-	public void setEscolaFundamental(String escolaFundamental) {
-		this.escolaFundamental = escolaFundamental;
-	}
-
-	public String getEscolaMedio() {
-		return escolaMedio;
-	}
-
-	public void setEscolaMedio(String escolaMedio) {
-		this.escolaMedio = escolaMedio;
+	public void setEscola(String escola) {
+		this.escola = escola;
 	}
 
 	public String getAnoMedio() {
@@ -415,20 +415,20 @@ public class AlunoForm {
 		this.medicamentosUsoContinuo = medicamentosUsoContinuo;
 	}
 
-	public String getObservasao() {
-		return observasao;
+	public String getObservacao() {
+		return observacao;
 	}
 
-	public void setObservasao(String observasao) {
-		this.observasao = observasao;
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 
 	public Aluno converter() {
-		return new Aluno(matricula, nome, nomeSocial, idade, estadoCivil, LocalDate.parse(dataNascimento, formatter), rg,
-				cpf, telefoneCelular, numeroWhatsapp, telefoneRecado, nomePessoaTelefoneRecado, endereco, email,
-				nomeResponsavel, escolaridade, escolaFundamental, escolaMedio, anoMedio, anoFormacaoMedio, camiseta,
-				sapato, servicoAtendimento, unidade, tecnico, telefoneTecnico, alergia, alergiaRemedio, alergiaAlimento,
+		return new Aluno(matricula, nome, nomeSocial, idade, estadoCivil, LocalDate.parse(dataNascimento, formatter), rg, cpf, telefoneCelular,
+				numeroWhatsapp, telefoneRecado, nomePessoaTelefoneRecado, endereco, email, nomeResponsavel,
+				escolaridade, escolaridadeGrau, escola, anoMedio, anoFormacaoMedio, camiseta, sapato,
+				servicoAtendimento, unidade, tecnico, telefoneTecnico, alergia, alergiaRemedio, alergiaAlimento,
 				alergiaOutros, especificacaoAlergia, hipertensao, hipotensao, epilepsia, diabetes, problemaRenal,
-				problemaOcular, problemaRespiratorio, fumante, medicamentosUsoContinuo, observasao);
+				problemaOcular, problemaRespiratorio, fumante, medicamentosUsoContinuo, observacao);
 	}
 }
