@@ -1,6 +1,7 @@
 package br.com.restaurante.service.implemetation;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,8 @@ import br.com.restaurante.service.InterfaceService;
 @Service
 public class FrequenciaService implements InterfaceService<Frequencia> {
 	
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	
 	@Autowired
 	private FrequenciaAlunoRepository frequenciaRepository;
 
@@ -29,6 +32,11 @@ public class FrequenciaService implements InterfaceService<Frequencia> {
 	@Override
 	public Frequencia findById(Long id) {
 		Optional<Frequencia> _Frequencia = frequenciaRepository.findById(id);
+		return _Frequencia.orElse(null);
+	}
+	
+	public List<Frequencia> findByData(String data, Integer numero) {
+		Optional<List<Frequencia>> _Frequencia = frequenciaRepository.findByDataAulaAndTurma_Numero(LocalDate.parse(data,formatter), numero);
 		return _Frequencia.orElse(null);
 	}
 

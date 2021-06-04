@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.restaurante.controller.dto.FaltasDto;
 import br.com.restaurante.controller.dto.FrequenciaDto;
+import br.com.restaurante.controller.form.FrequenciaDataForm;
 import br.com.restaurante.controller.form.FrequenciaForm;
 import br.com.restaurante.model.Aluno;
 import br.com.restaurante.model.Frequencia;
@@ -46,6 +47,16 @@ public class FrequenciaController {
 		List<Frequencia> frequencias = frequenciaService.findAll();
 		return ResponseEntity.ok(FrequenciaDto.converter(frequencias));
 	}
+	
+	@GetMapping("/data")
+	public ResponseEntity<List<FrequenciaDto>> listarPorData(@RequestBody @Valid FrequenciaDataForm form) {
+		List<Frequencia> frequencias = frequenciaService.findByData(form.getDataAula(), form.getNumeroTurma());
+		if (frequencias != null) {
+			return ResponseEntity.ok(FrequenciaDto.converter(frequencias));
+		}
+		return ResponseEntity.notFound().build();
+	}
+
 
 	@GetMapping("/{codigo}")
 	public ResponseEntity<FrequenciaDto> listarFrequencias(@PathVariable Long codigo) {
