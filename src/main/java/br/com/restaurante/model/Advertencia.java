@@ -1,5 +1,6 @@
 package br.com.restaurante.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
@@ -14,8 +15,10 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Advertencia {
+public class Advertencia implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cd_advertencia")
