@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.restaurante.controller.dto.FaltasDto;
 import br.com.restaurante.controller.dto.FrequenciaDto;
-import br.com.restaurante.controller.form.FrequenciaDataForm;
 import br.com.restaurante.controller.form.FrequenciaForm;
 import br.com.restaurante.model.Aluno;
 import br.com.restaurante.model.Frequencia;
@@ -49,8 +49,8 @@ public class FrequenciaController {
 	}
 	
 	@GetMapping("/data")
-	public ResponseEntity<List<FrequenciaDto>> listarPorData(@RequestBody @Valid FrequenciaDataForm form) {
-		List<Frequencia> frequencias = frequenciaService.findByData(form.getDataAula(), form.getNumeroTurma());
+	public ResponseEntity<List<FrequenciaDto>> listarPorData(@RequestParam(required = true, defaultValue = "1") Integer numeroTurma, @RequestParam(required = true) String data) {
+		List<Frequencia> frequencias = frequenciaService.findByData(data, numeroTurma);
 		if (frequencias != null) {
 			return ResponseEntity.ok(FrequenciaDto.converter(frequencias));
 		}

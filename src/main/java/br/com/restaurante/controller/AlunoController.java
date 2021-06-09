@@ -49,8 +49,8 @@ public class AlunoController {
 	}
 	
 	@GetMapping("/nome")
-	public ResponseEntity<List<AlunoDto>> listaPorNome(@RequestBody @Valid AlunoForm form) { 
-		List<Aluno> alunos = service.findByNome(form.getNome());
+	public ResponseEntity<List<AlunoDto>> listaPorNome(@RequestParam(required = true) String nome) { 
+		List<Aluno> alunos = service.findByNome(nome);
 		if (alunos != null) {
 			return ResponseEntity.ok(AlunoDto.converter(alunos));
 		} 
