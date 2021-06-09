@@ -27,7 +27,7 @@ public class TokenService {
 		Date dataExpiracao = new Date(hoje.getTime() + Long.parseLong(expiration));
 		//utilizando a api do jjwt (importada nas dependencias do pom.xml)
 		return Jwts.builder() //builder para setar as infos para construir o token
-					.setIssuer("API do Fórum da Alura") //setar quem esta gerando o token (quem é a aplicacao que fez a geracao do token)
+					.setIssuer("API Restaurante Escola") //setar quem esta gerando o token (quem é a aplicacao que fez a geracao do token)
 					.setSubject(logado.getId().toString()) //setar quem eh o usuario, quem eh o dono do token, quem eh o usuario autenticado que este token pertence
 					.setIssuedAt(hoje) //diz qual foi a data de geracao deste token
 					.setExpiration(dataExpiracao) //diz qual eh a data de expiracao do token
