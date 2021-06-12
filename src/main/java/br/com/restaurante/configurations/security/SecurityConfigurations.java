@@ -48,7 +48,9 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	//Configuracoes de Autorizacao
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
+		http.cors().
+		and().
+			authorizeRequests()
 			.antMatchers(HttpMethod.POST, "/auth").permitAll() //autenticacao usuario
 			.anyRequest().authenticated() //qualquer outra requisicao(url) precisa estar autenticada
 		.and() //AUTENTICACAO MODO WEB TOKEN
