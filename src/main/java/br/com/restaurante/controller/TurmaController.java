@@ -42,15 +42,6 @@ public class TurmaController {
 		return ResponseEntity.ok(TurmaDto.converter(turmas));
 	}
 
-//	@GetMapping("/aluno/{matricula}")
-//	public ResponseEntity<List<OcorrenciaDiarioDto>> listaPorMatricula(@PathVariable Long matricula) {
-//		if (alunoService.findById(matricula) != null) { //NAO TA ACHANDO O ALUNO POR ID	
-//			Aluno aluno = alunoService.findById(matricula);
-//			List<OcorrenciaDiario> listaOcorrencias = ocorrenciaDiarioService.findListByAluno(aluno);
-//			return ResponseEntity.ok(OcorrenciaDiarioDto.converter(listaOcorrencias));
-//		}
-//		return ResponseEntity.notFound().build();
-//	}
 
 	@GetMapping("/{codigo}")
 	public ResponseEntity<TurmaDto> listarTurmas(@PathVariable Integer codigo) {

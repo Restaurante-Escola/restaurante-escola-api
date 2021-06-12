@@ -48,6 +48,15 @@ public class AlunoController {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@GetMapping("/nome")
+	public ResponseEntity<List<AlunoDto>> listaPorNome(@RequestParam(required = true) String nome) { 
+		List<Aluno> alunos = service.findByNome(nome);
+		if (alunos != null) {
+			return ResponseEntity.ok(AlunoDto.converter(alunos));
+		} 
+		return ResponseEntity.notFound().build();
+	}
+	
 	@PostMapping
 	@Transactional 
 	public ResponseEntity<?> cadastrar(@RequestBody @Valid AlunoForm form) { //o @RequestBody indica ao Spring que os parâmetros enviados no corpo da requisição devem ser atribuídos ao parâmetro do método

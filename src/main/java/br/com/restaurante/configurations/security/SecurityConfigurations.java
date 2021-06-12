@@ -33,7 +33,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	private UsuarioRepository usuarioRepository;
 	
 	@Override
-	@Bean //com o @Bean, o spring sabe que este metodo devolve o AuthenticationManager para ser usado na injecao de dependencias (duvida respondida aqui: https://cursos.alura.com.br/forum/topico-bean-145870#919742)
+	@Bean //com o @Bean, o spring sabe que este metodo devolve o AuthenticationManager para ser usado na injecao de dependencias
 	protected AuthenticationManager authenticationManager() throws Exception {
 		return super.authenticationManager(); //como tem o super, este metodo vem da classe pai, da classe que estamos herdando (extends)
 	}

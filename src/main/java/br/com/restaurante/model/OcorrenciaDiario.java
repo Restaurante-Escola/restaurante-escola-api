@@ -1,5 +1,6 @@
 package br.com.restaurante.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
@@ -17,7 +18,9 @@ import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "OCORRENCIA_DIARIO")
-public class OcorrenciaDiario {
+public class OcorrenciaDiario implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
