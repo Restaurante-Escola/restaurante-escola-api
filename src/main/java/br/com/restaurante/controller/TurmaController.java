@@ -74,7 +74,11 @@ public class TurmaController {
 	}
 
 	private boolean existeTurma(TurmaForm form) {
-		return turmaService.findByCodigoTurma(form.getNumero()).getNumero().equals(form.getNumero());
+		try {
+			return turmaService.findByCodigoTurma(form.getNumero()).getNumero().equals(form.getNumero());
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	@PostMapping("/cadastrar-alunos")
