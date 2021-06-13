@@ -1,4 +1,4 @@
-package br.com.restaurante.service.implemetation;
+package br.com.restaurante.service.implementation;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import br.com.restaurante.model.Aluno;
 import br.com.restaurante.model.AlunoTurma;
 import br.com.restaurante.model.Turma;
-import br.com.restaurante.repository.AlunoRepository;
 import br.com.restaurante.repository.AlunoTurmaRepository;
 import br.com.restaurante.repository.TurmaRepository;
 import br.com.restaurante.service.InterfaceService;
@@ -47,16 +46,6 @@ public class TurmaService implements InterfaceService<Turma> {
 		Optional<Turma> _Turma = turmaRepository.findByNumero(codigo);
 		return _Turma.orElse(null);
 	}
-	
-	public Turma findByAluno(Aluno aluno) {
-		Optional<Turma> _Turma = turmaRepository.findByTurma_Aluno(aluno);
-		return _Turma.orElse(null);
-	}
-	
-//	public List<Turma> findListByAluno(Aluno aluno) {
-//		Optional<List<OcorrenciaDiario>> _OcorrenciaDiario = turmaRepository.findListByAluno(aluno);
-//		return _OcorrenciaDiario.orElse(new ArrayList<OcorrenciaDiario>());
-//	}
 
 	@Override
 	public List<Turma> findAll() {

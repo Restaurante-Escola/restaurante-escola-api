@@ -20,8 +20,8 @@ import br.com.restaurante.controller.dto.AdvertenciaDto;
 import br.com.restaurante.controller.form.AdvertenciaForm;
 import br.com.restaurante.model.Advertencia;
 import br.com.restaurante.model.Aluno;
-import br.com.restaurante.service.implemetation.AdvertenciaService;
-import br.com.restaurante.service.implemetation.AlunoService;
+import br.com.restaurante.service.implementation.AdvertenciaService;
+import br.com.restaurante.service.implementation.AlunoService;
 
 @RestController
 @RequestMapping("/advertencias")
@@ -41,8 +41,8 @@ public class AdvertenciaController {
 
 	@GetMapping("/aluno/{matricula}")
 	public ResponseEntity<List<AdvertenciaDto>> listaPorMatricula(@PathVariable Long matricula) {
-		if (alunoService.findById(matricula) != null) { //NAO TA ACHANDO O ALUNO POR ID	
-			Aluno aluno = alunoService.findById(matricula);
+		Aluno aluno = alunoService.findById(matricula);
+		if (aluno != null) { //NAO TA ACHANDO O ALUNO POR ID	
 			List<Advertencia> listaAdvertencias = advertenciaService.findListByAluno(aluno);
 			return ResponseEntity.ok(AdvertenciaDto.converter(listaAdvertencias));
 		}
@@ -51,8 +51,8 @@ public class AdvertenciaController {
 
 	@GetMapping("/{codigo}")
 	public ResponseEntity<AdvertenciaDto> lista(@PathVariable Long codigo) {
-		if (advertenciaService.findById(codigo) != null) {
-			Advertencia advertencia = advertenciaService.findById(codigo);
+		Advertencia advertencia = advertenciaService.findById(codigo);
+		if (advertencia != null) {
 			return ResponseEntity.ok(AdvertenciaDto.converter(advertencia));
 		}
 		return ResponseEntity.notFound().build();
@@ -83,7 +83,6 @@ public class AdvertenciaController {
 	@PutMapping("/{codigo}")
 	@Transactional
 	public ResponseEntity<?> atualizar(@PathVariable Long codigo, @RequestBody @Valid AdvertenciaForm form) {
-		System.out.println("Entrou " + codigo);
 		Advertencia advertencia = advertenciaService.findById(codigo);
 		if (advertencia != null) {
 			Advertencia advertenciaAtualizado = form.converterParaAtualizar(codigo, advertencia.getAluno());
@@ -92,5 +91,4 @@ public class AdvertenciaController {
 		}
 		return ResponseEntity.notFound().build();
 	}
-
 }

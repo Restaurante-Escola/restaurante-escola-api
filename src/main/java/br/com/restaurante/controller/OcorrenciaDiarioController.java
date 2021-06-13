@@ -20,8 +20,8 @@ import br.com.restaurante.controller.dto.OcorrenciaDiarioDto;
 import br.com.restaurante.controller.form.OcorrenciaDiarioForm;
 import br.com.restaurante.model.Aluno;
 import br.com.restaurante.model.OcorrenciaDiario;
-import br.com.restaurante.service.implemetation.AlunoService;
-import br.com.restaurante.service.implemetation.OcorrenciaDiarioService;
+import br.com.restaurante.service.implementation.AlunoService;
+import br.com.restaurante.service.implementation.OcorrenciaDiarioService;
 
 @RestController
 @RequestMapping("/ocorrencias")
@@ -41,8 +41,8 @@ public class OcorrenciaDiarioController {
 
 	@GetMapping("/aluno/{matricula}")
 	public ResponseEntity<List<OcorrenciaDiarioDto>> listaPorMatricula(@PathVariable Long matricula) {
-		if (alunoService.findById(matricula) != null) { //NAO TA ACHANDO O ALUNO POR ID	
-			Aluno aluno = alunoService.findById(matricula);
+		Aluno aluno = alunoService.findById(matricula);
+		if (aluno != null) { //NAO TA ACHANDO O ALUNO POR ID	
 			List<OcorrenciaDiario> listaOcorrencias = ocorrenciaDiarioService.findListByAluno(aluno);
 			return ResponseEntity.ok(OcorrenciaDiarioDto.converter(listaOcorrencias));
 		}
@@ -51,8 +51,8 @@ public class OcorrenciaDiarioController {
 
 	@GetMapping("/{codigo}")
 	public ResponseEntity<OcorrenciaDiarioDto> lista(@PathVariable Long codigo) {
-		if (ocorrenciaDiarioService.findById(codigo) != null) {
-			OcorrenciaDiario ocorrenciaDiario = ocorrenciaDiarioService.findById(codigo);
+		OcorrenciaDiario ocorrenciaDiario = ocorrenciaDiarioService.findById(codigo);
+		if (ocorrenciaDiario != null) {
 			return ResponseEntity.ok(OcorrenciaDiarioDto.converter(ocorrenciaDiario));
 		}
 		return ResponseEntity.notFound().build();
@@ -83,7 +83,6 @@ public class OcorrenciaDiarioController {
 	@PutMapping("/{codigo}")
 	@Transactional
 	public ResponseEntity<?> atualizar(@PathVariable Long codigo, @RequestBody @Valid OcorrenciaDiarioForm form) {
-		System.out.println("Entrou " + codigo);
 		OcorrenciaDiario ocorrencia = ocorrenciaDiarioService.findById(codigo);
 		if (ocorrencia != null) {
 			OcorrenciaDiario ocorrenciaDiarioAtualizado = form.converter(codigo, ocorrencia.getAluno());
@@ -92,5 +91,4 @@ public class OcorrenciaDiarioController {
 		}
 		return ResponseEntity.notFound().build();
 	}
-
 }

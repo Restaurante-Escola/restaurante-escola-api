@@ -25,9 +25,9 @@ import br.com.restaurante.model.Aluno;
 import br.com.restaurante.model.Frequencia;
 import br.com.restaurante.model.StatusPresenca;
 import br.com.restaurante.model.Turma;
-import br.com.restaurante.service.implemetation.AlunoService;
-import br.com.restaurante.service.implemetation.FrequenciaService;
-import br.com.restaurante.service.implemetation.TurmaService;
+import br.com.restaurante.service.implementation.AlunoService;
+import br.com.restaurante.service.implementation.FrequenciaService;
+import br.com.restaurante.service.implementation.TurmaService;
 
 @RestController
 @RequestMapping("/frequencias")
@@ -60,8 +60,8 @@ public class FrequenciaController {
 
 	@GetMapping("/{codigo}")
 	public ResponseEntity<FrequenciaDto> listarFrequencias(@PathVariable Long codigo) {
-		if (frequenciaService.findById(codigo) != null) {
-			Frequencia frequencia = frequenciaService.findById(codigo);
+		Frequencia frequencia = frequenciaService.findById(codigo);
+		if (frequencia != null) {
 			return ResponseEntity.ok(FrequenciaDto.converter(frequencia));
 		}
 		return ResponseEntity.notFound().build();

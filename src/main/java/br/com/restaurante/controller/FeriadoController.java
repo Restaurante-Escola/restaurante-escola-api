@@ -21,7 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.com.restaurante.controller.dto.FeriadoDto;
 import br.com.restaurante.controller.form.FeriadoForm;
 import br.com.restaurante.model.Feriado;
-import br.com.restaurante.service.implemetation.FeriadoService;
+import br.com.restaurante.service.implementation.FeriadoService;
 
 @RestController
 @RequestMapping("/feriado")
@@ -38,8 +38,8 @@ public class FeriadoController {
 	
 	@GetMapping("/{codigo}")
 	public ResponseEntity<FeriadoDto> lista(@PathVariable Long codigo) { 
-		if (service.findById(codigo) != null) {
-			Feriado feriado = service.findById(codigo);
+		Feriado feriado = service.findById(codigo);
+		if (feriado != null) {
 			return ResponseEntity.ok(FeriadoDto.converter(feriado));
 		} 
 		return ResponseEntity.notFound().build();

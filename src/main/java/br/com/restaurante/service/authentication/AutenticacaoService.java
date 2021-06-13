@@ -1,4 +1,4 @@
-package br.com.restaurante.service;
+package br.com.restaurante.service.authentication;
 
 import java.util.Optional;
 

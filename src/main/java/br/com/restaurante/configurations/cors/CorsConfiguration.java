@@ -1,4 +1,4 @@
-package br.com.restaurante.configurations;
+package br.com.restaurante.configurations.cors;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import br.com.restaurante.configurations.security.filter.AutenticacaoViaTokenFilter;
 import br.com.restaurante.repository.UsuarioRepository;
-import br.com.restaurante.service.AutenticacaoService;
+import br.com.restaurante.service.authentication.AutenticacaoService;
 import br.com.restaurante.service.token.TokenService;
 
 @EnableWebSecurity

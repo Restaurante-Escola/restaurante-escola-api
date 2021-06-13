@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.restaurante.controller.dto.AlunoDto;
 import br.com.restaurante.controller.form.AlunoForm;
 import br.com.restaurante.model.Aluno;
-import br.com.restaurante.service.implemetation.AlunoService;
+import br.com.restaurante.service.implementation.AlunoService;
 
 @RestController
 @RequestMapping("/alunos")

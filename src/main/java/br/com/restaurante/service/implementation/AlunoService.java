@@ -1,4 +1,4 @@
-package br.com.restaurante.service.implemetation;
+package br.com.restaurante.service.implementation;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

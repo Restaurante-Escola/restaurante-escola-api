@@ -23,8 +23,8 @@ import br.com.restaurante.controller.form.TurmaForm;
 import br.com.restaurante.model.Aluno;
 import br.com.restaurante.model.AlunoTurma;
 import br.com.restaurante.model.Turma;
-import br.com.restaurante.service.implemetation.AlunoService;
-import br.com.restaurante.service.implemetation.TurmaService;
+import br.com.restaurante.service.implementation.AlunoService;
+import br.com.restaurante.service.implementation.TurmaService;
 
 @RestController
 @RequestMapping("/turmas")
@@ -42,11 +42,10 @@ public class TurmaController {
 		return ResponseEntity.ok(TurmaDto.converter(turmas));
 	}
 
-
 	@GetMapping("/{codigo}")
 	public ResponseEntity<TurmaDto> listarTurmas(@PathVariable Integer codigo) {
-		if (turmaService.findByCodigoTurma(codigo) != null) {
-			Turma turma = turmaService.findByCodigoTurma(codigo);
+		Turma turma = turmaService.findByCodigoTurma(codigo);
+		if (turma != null) {
 			return ResponseEntity.ok(TurmaDto.converter(turma));
 		}
 		return ResponseEntity.notFound().build();
