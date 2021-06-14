@@ -27,20 +27,20 @@ public class OcorrenciaDiarioForm {
 		this.matricula = matricula;
 	}
 
-	public String getOcorrencia() {
+	public String getDescricao() {
 		return descricao;
 	}
 
-	public void setOcorrencia(String ocorrencia) {
-		this.descricao = ocorrencia;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
-	public String getDataOcorrencia() {
+	public String getData() {
 		return data;
 	}
 
-	public void setDataOcorrencia(String dataOcorrencia) {
-		this.data = dataOcorrencia;
+	public void setData(String data) {
+		this.data = data;
 	}
 
 	public OcorrenciaDiario converter(Long codigo, Aluno aluno) {

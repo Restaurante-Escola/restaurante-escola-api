@@ -9,12 +9,12 @@ public class AdvertenciaDto {
 
 	private Long codigo;
 
-	private Long matriculaAluno;
+	private Long matricula;
 
-	private String dataDescricao;
+	private String data;
 
 	private String descricao;
-	
+
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -23,20 +23,20 @@ public class AdvertenciaDto {
 		this.codigo = codigo;
 	}
 
-	public Long getMatriculaAluno() {
-		return matriculaAluno;
+	public Long getMatricula() {
+		return matricula;
 	}
 
-	public void setMatriculaAluno(Long matriculaAluno) {
-		this.matriculaAluno = matriculaAluno;
+	public void setMatricula(Long matricula) {
+		this.matricula = matricula;
 	}
 
-	public String getDataDescricao() {
-		return dataDescricao;
+	public String getData() {
+		return data;
 	}
 
-	public void setDataDescricao(String dataDescricao) {
-		this.dataDescricao = dataDescricao;
+	public void setData(String data) {
+		this.data = data;
 	}
 
 	public String getDescricao() {
@@ -49,10 +49,10 @@ public class AdvertenciaDto {
 
 	public AdvertenciaDto(Advertencia advertencia) {
 		this.codigo = advertencia.getCodigo();
-		this.matriculaAluno = advertencia.getAluno().getMatricula();
+		this.matricula = advertencia.getAluno().getMatricula();
 		this.descricao = advertencia.getDescricao();		
 		if (advertencia.getDataDescricao() != null) {
-			this.dataDescricao = advertencia.getDataDescricao().toString();
+			this.data = advertencia.getDataDescricao().toString();
 		}
 	}
 

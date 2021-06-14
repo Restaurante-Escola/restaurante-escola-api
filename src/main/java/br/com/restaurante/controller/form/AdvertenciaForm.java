@@ -27,14 +27,6 @@ public class AdvertenciaForm {
 		this.matricula = matricula;
 	}
 
-	public String getDataDescricao() {
-		return data;
-	}
-
-	public void setDataDescricao(String dataDescricao) {
-		this.data = dataDescricao;
-	}
-
 	public String getDescricao() {
 		return descricao;
 	}
@@ -42,7 +34,15 @@ public class AdvertenciaForm {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
 	public Advertencia converterParaAtualizar(Long codigo, Aluno aluno) {
 		return new Advertencia(codigo, aluno, descricao, LocalDate.parse(data, formatter));
 	}
