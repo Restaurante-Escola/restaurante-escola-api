@@ -17,7 +17,7 @@ public class OcorrenciaDiarioForm {
 
 	private String ocorrencia;
 
-	private String dataOcorrencia; //nao pode mandar data assimn: 1/1/2019, tem que ser sempre 01/01/2019
+	private String data; //nao pode mandar data assimn: 1/1/2019, tem que ser sempre 01/01/2019
 	
 	public Long getMatricula() {
 		return matricula;
@@ -36,19 +36,19 @@ public class OcorrenciaDiarioForm {
 	}
 
 	public String getDataOcorrencia() {
-		return dataOcorrencia;
+		return data;
 	}
 
 	public void setDataOcorrencia(String dataOcorrencia) {
-		this.dataOcorrencia = dataOcorrencia;
+		this.data = dataOcorrencia;
 	}
 
 	public OcorrenciaDiario converter(Long codigo, Aluno aluno) {
 		//se der problema no parse, tentar colocar a matricula como long no json
-		return new OcorrenciaDiario(codigo, aluno, ocorrencia, LocalDate.parse(dataOcorrencia, formatter));
+		return new OcorrenciaDiario(codigo, aluno, ocorrencia, LocalDate.parse(data, formatter));
 	}
 	
 	public OcorrenciaDiario converter(Aluno aluno) {
-		return new OcorrenciaDiario(aluno, ocorrencia, LocalDate.parse(dataOcorrencia, formatter));
+		return new OcorrenciaDiario(aluno, ocorrencia, LocalDate.parse(data, formatter));
 	}
 }

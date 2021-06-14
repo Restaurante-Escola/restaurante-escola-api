@@ -17,7 +17,7 @@ public class AdvertenciaForm {
 
 	private String descricao;
 
-	private String dataDescricao;
+	private String data;
 	
 	public Long getMatricula() {
 		return matricula;
@@ -28,11 +28,11 @@ public class AdvertenciaForm {
 	}
 
 	public String getDataDescricao() {
-		return dataDescricao;
+		return data;
 	}
 
 	public void setDataDescricao(String dataDescricao) {
-		this.dataDescricao = dataDescricao;
+		this.data = dataDescricao;
 	}
 
 	public String getDescricao() {
@@ -44,10 +44,10 @@ public class AdvertenciaForm {
 	}
 	
 	public Advertencia converterParaAtualizar(Long codigo, Aluno aluno) {
-		return new Advertencia(codigo, aluno, descricao, LocalDate.parse(dataDescricao, formatter));
+		return new Advertencia(codigo, aluno, descricao, LocalDate.parse(data, formatter));
 	}
 
 	public Advertencia converterParaCriar(Aluno aluno) {
-		return new Advertencia(aluno, descricao, LocalDate.parse(dataDescricao, formatter));
+		return new Advertencia(aluno, descricao, LocalDate.parse(data, formatter));
 	}
 }
