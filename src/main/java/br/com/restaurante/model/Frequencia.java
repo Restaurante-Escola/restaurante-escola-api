@@ -34,12 +34,12 @@ public class Frequencia implements Serializable {
 	@Column(name = "cd_status_presenca")
 	private StatusPresenca status;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "cd_turma")
 	@JsonIgnore
 	private Turma turma;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "cd_matricula_aluno")
 	@JsonIgnore
 	private Aluno aluno;

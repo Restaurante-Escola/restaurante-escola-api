@@ -28,7 +28,7 @@ public class OcorrenciaDiario implements Serializable {
 	@NotNull
 	private Long codigo;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "cd_matricula_aluno")
 	@JsonIgnore
 	private Aluno aluno;

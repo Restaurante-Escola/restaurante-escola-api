@@ -22,11 +22,11 @@ public class Boletim implements Serializable {
 	@Column(name = "cd_boletim")
 	private Long codigo;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "cd_disciplina")
 	private Disciplina disciplina;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "cd_matricula_aluno")
 	private Aluno aluno;
 	
