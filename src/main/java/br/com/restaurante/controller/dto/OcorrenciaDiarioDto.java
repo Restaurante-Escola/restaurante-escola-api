@@ -11,7 +11,7 @@ public class OcorrenciaDiarioDto {
 	
 	private String matricula;
 
-	private String ocorrencia;
+	private String descricao;
 
 	private String data;
 
@@ -31,14 +31,6 @@ public class OcorrenciaDiarioDto {
 		this.matricula = matricula;
 	}
 
-	public String getOcorrencia() {
-		return ocorrencia;
-	}
-
-	public void setOcorrencia(String ocorrencia) {
-		this.ocorrencia = ocorrencia;
-	}
-
 	public String getData() {
 		return data;
 	}
@@ -46,13 +38,21 @@ public class OcorrenciaDiarioDto {
 	public void setData(String data) {
 		this.data = data;
 	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
 	public OcorrenciaDiarioDto(OcorrenciaDiario ocorrenciaDiario) {
 		this.codigo = ocorrenciaDiario.getCodigo();
 		this.matricula = ocorrenciaDiario.getAluno().getMatricula().toString(); 
 		//pode dar problema no parse do long para string
 		//se der, mudar a matricula no json para long
-		this.ocorrencia = ocorrenciaDiario.getOcorrencia();
+		this.descricao = ocorrenciaDiario.getOcorrencia();
 		this.data = ocorrenciaDiario.getDataOcorrencia().toString();
 	}
 
