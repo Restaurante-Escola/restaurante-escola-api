@@ -13,7 +13,7 @@ public class FrequenciaDto {
 	
 	private Integer codigoTurma;
 
-	private Long matricula;
+	private AlunoDto alunoDto;
 	
 	private String dataAula;
 
@@ -37,16 +37,12 @@ public class FrequenciaDto {
 		return codigoTurma;
 	}
 
+	public AlunoDto getAlunoDto() {
+		return alunoDto;
+	}
+
 	public void setCodigoTurma(Integer codigoTurma) {
 		this.codigoTurma = codigoTurma;
-	}
-
-	public Long getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(Long matricula) {
-		this.matricula = matricula;
 	}
 
 	public String getDataAula() {
@@ -60,7 +56,7 @@ public class FrequenciaDto {
 	public FrequenciaDto(Frequencia frequencia) {
 		this.codigo = frequencia.getCodigo();
 		this.codigoTurma = frequencia.getTurma().getNumero();
-		this.matricula = frequencia.getAluno().getMatricula();
+		this.alunoDto = AlunoDto.converter(frequencia.getAluno());
 		this.status = frequencia.getStatus().toString();
 		this.dataAula = frequencia.getDataAula().toString();
 	}
