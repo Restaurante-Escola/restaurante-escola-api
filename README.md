@@ -3,19 +3,19 @@
 
 Aplicação feita para o Projeto Restaurante Escola por meio de uma atividade interdisciplinar realizada nos 7º e 8º semestres na Universidade Católica de Santos.
 
-### Introdução
+## Introdução
 O Projeto Restaurante-escola “Estação Bistrô” é desenvolvido pela Sociedade Visconde de São Leopoldo, juntamente com sua mantenedora, Universidade Católica de Santos – UNISANTOS, responsável pela gestão do restaurante e pela formação profissional de jovens em estado de vulnerabilidade pessoal e social desde 2012.
 
-### Tecnologias Utilizadas
+## Tecnologias Utilizadas
 - Java
 - Springboot
 - Angular
 - Git
 
-### Documentação
+## Documentação
 A documentação mais detalhada com BPMN, diagramas, regras de negócio, etc, podem ser encontrados na nossa [wiki](https://github.com/Restaurante-Escola/restaurante-escola-api/wiki/Documenta%C3%A7%C3%A3o)
 
-### Integrantes do Grupo
+## Integrantes do Grupo
 - Arthur Chaves
 - Beatriz Justino
 - Felipe Ferreira
@@ -26,5 +26,5 @@ A documentação mais detalhada com BPMN, diagramas, regras de negócio, etc, po
 - Rafael Oliveira
 - Victor Moreno
 
-### Repositório do Front-end
+## Repositório do Front-end
 https://github.com/Restaurante-Escola/restaurante-escola-front
