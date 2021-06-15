@@ -25,3 +25,6 @@ A documentação mais detalhada com BPMN, diagramas, regras de negócio, etc, po
 - Luis Durante
 - Rafael Oliveira
 - Victor Moreno
+
+### Repositório do Front-end
+https://github.com/Restaurante-Escola/restaurante-escola-front
