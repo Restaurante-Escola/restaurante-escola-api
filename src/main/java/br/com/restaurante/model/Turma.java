@@ -40,13 +40,13 @@ public class Turma implements Serializable {
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm = LocalDate.now();
 	
-	@OneToMany(mappedBy = "turma")
+	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
 	private List<AlunoTurma> turma;
 	
-	@OneToMany(mappedBy = "turma")
+	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
 	private List<DisciplinaTurma> turmaDisicplina;
 
-	@OneToMany(mappedBy = "turma")
+	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
 	private List<Frequencia> frequencias;
 
 	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO

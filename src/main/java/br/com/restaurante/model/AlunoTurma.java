@@ -22,11 +22,11 @@ public class AlunoTurma implements Serializable {
 	@Column(name = "cd_aluno_turma")
 	private Long codigo;
 
-	@ManyToOne()
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_matricula_aluno")
 	private Aluno aluno;
 	
-	@ManyToOne()
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_turma")
 	private Turma turma;
 	
