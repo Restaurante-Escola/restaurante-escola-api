@@ -148,19 +148,19 @@ public class Aluno implements Serializable {
 	@Column(name = "dt_atualizado_em")
 	private LocalDate atualizadoEm = LocalDate.now();
 
-	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "aluno")
 	private List<Advertencia> advertencias;
 
-	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "aluno")
 	private List<Boletim> boletins;
 
-	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "aluno")
 	private List<Frequencia> frequencias;
 	
-	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "aluno")
 	private List<OcorrenciaDiario> ocorrenciaDiario;
 
-	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "aluno")
 	private List<AlunoTurma> turma;
 	
 	//NÃO PODE EXCLUIR O CONSTRUTOR VAZIO

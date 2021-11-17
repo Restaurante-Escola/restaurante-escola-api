@@ -24,7 +24,7 @@ public class Advertencia implements Serializable {
 	@Column(name = "cd_advertencia")
 	private Long codigo;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "cd_matricula_aluno")
 	@JsonIgnore
 	private Aluno aluno;
