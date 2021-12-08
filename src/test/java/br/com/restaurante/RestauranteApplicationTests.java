@@ -32,19 +32,23 @@ class RestauranteApplicationTests {
 	}
 	
 	public void create() {
-		Assert.assertNotNull(service.create(aluno));
+		Aluno alunoCriado = service.create(aluno);
+		Assert.assertNotNull(alunoCriado);
 	}
 	
 	public void read() {
-		Assert.assertNotNull( service.findById(666L));
+		Aluno alunoBuscado = service.findById(345749287L);
+		Assert.assertNotNull(alunoBuscado);
 	}
 	
 	public void update() {
 		aluno.setNome("Teste Aluno");
-		Assert.assertTrue(service.update(aluno));
+		boolean update = service.update(aluno);
+		Assert.assertTrue(update);
 	}
 	
 	public void delete() {
-		Assert.assertTrue(service.delete(666L));
+		boolean delete = service.delete(345749287L);
+		Assert.assertTrue(delete);
 	}
 }
