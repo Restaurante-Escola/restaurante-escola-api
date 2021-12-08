@@ -28,3 +28,6 @@ A documentação mais detalhada com BPMN, diagramas, regras de negócio, etc, po
 
 ## Repositório do Front-end
 https://github.com/Restaurante-Escola/restaurante-escola-front
+
+## Repositório do Mobile
+https://github.com/Restaurante-Escola/restaurante-escola-mobile
